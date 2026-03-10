@@ -1,0 +1,104 @@
+.appointment-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 36px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(26, 115, 232, 0.06);
+  border-radius: 12px;
+  background: #fff;
+}
+@media (max-width: 768px) {
+  .appointment-form {
+    width: 100%;
+    padding: 24px 20px;
+  }
+}
+.appointment-form .form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+.appointment-form .form-group input,
+.appointment-form .form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #ccc;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 15px;
+  color: #222;
+  outline: none;
+  box-shadow: none;
+  transition: border-color 0.25s ease;
+  resize: none;
+}
+.appointment-form .form-group input::-moz-placeholder, .appointment-form .form-group textarea::-moz-placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+.appointment-form .form-group input::placeholder,
+.appointment-form .form-group textarea::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+.appointment-form .form-group input:focus,
+.appointment-form .form-group textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom-color: #1a73e8;
+}
+.appointment-form .form-group input.is-invalid, .appointment-form .form-group input[aria-invalid=true],
+.appointment-form .form-group textarea.is-invalid,
+.appointment-form .form-group textarea[aria-invalid=true] {
+  border-bottom-color: #e53935;
+}
+.appointment-form .form-group textarea {
+  min-height: 80px;
+}
+.appointment-form .form-group .error {
+  display: none;
+}
+.appointment-form .form-group:has(.error) input,
+.appointment-form .form-group:has(.error) textarea {
+  border-bottom-color: #e53935;
+}
+.appointment-form .btn-wrap {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+.appointment-form .btn-wrap .btn-primary {
+  display: inline-block;
+  padding: 12px 36px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a73e8;
+  background: transparent;
+  border: 2px solid #1a73e8;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+  letter-spacing: 0.3px;
+}
+.appointment-form .btn-wrap .btn-primary:hover:not(:disabled) {
+  background: #1a73e8;
+  color: #fff;
+}
+.appointment-form .btn-wrap .btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.appointment-form .wpcf7-response-output {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a73e8;
+  min-height: 20px;
+  text-align: center;
+}
+.appointment-form .wpcf7-response-output.error-msg {
+  color: #e53935;
+}
+.appointment-form .wpcf7-response-output.success-msg {
+  color: #2e7d32;
+  text-align: center;
+}/*# sourceMappingURL=contact.css.map */

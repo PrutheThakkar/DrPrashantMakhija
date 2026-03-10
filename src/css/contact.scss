@@ -1,0 +1,116 @@
+.appointment-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 36px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(26, 115, 232, 0.06);
+  border-radius: 12px;
+  background: #fff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 24px 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+
+    input,
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid #ccc;
+      border-radius: 0;
+      padding: 10px 0;
+      font-size: 15px;
+      color: #222;
+      outline: none;
+      box-shadow: none;
+      transition: border-color 0.25s ease;
+      resize: none;
+
+      &::placeholder {
+        color: #aaa;
+        font-size: 14px;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        border-bottom-color: #1a73e8;
+      }
+
+      // Red bottom border on validation error
+      &.is-invalid,
+      &[aria-invalid="true"] {
+        border-bottom-color: #e53935;
+      }
+    }
+
+    textarea {
+      min-height: 80px;
+    }
+
+    // Hide error message text — border goes red instead
+    .error {
+      display: none;
+    }
+
+    // Apply red border when sibling error message exists
+    &:has(.error) {
+      input,
+      textarea {
+        border-bottom-color: #e53935;
+      }
+    }
+  }
+
+  .btn-wrap {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 36px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a73e8;
+      background: transparent;
+      border: 2px solid #1a73e8;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+      letter-spacing: 0.3px;
+
+      &:hover:not(:disabled) {
+        background: #1a73e8;
+        color: #fff;
+      }
+
+      &:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  // Sending / success / error response message
+  .wpcf7-response-output {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a73e8; // blue "Form is sending..." message
+    min-height: 20px;
+    text-align: center;
+    &.error-msg {
+      color: #e53935;
+    }
+
+    &.success-msg {
+      color: #2e7d32;
+      text-align: center;
+    }
+  }
+}

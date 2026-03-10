@@ -1,0 +1,462 @@
+.hero-section {
+  height: 100vh;
+  background: url(https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Hero-Image.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0;
+}
+@media (max-width: 1024px) {
+  .hero-section {
+    height: 700px;
+  }
+}
+@media (max-width: 767px) {
+  .hero-section {
+    padding: 50px 20px;
+    height: auto;
+  }
+}
+.hero-section .container {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .hero-section .container {
+    flex-direction: column;
+  }
+}
+.hero-section .left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 1310px) {
+  .hero-section .left {
+    width: 45%;
+  }
+}
+@media (max-width: 1280px) {
+  .hero-section .left {
+    width: 42%;
+  }
+}
+@media (max-width: 1024px) {
+  .hero-section .left {
+    width: 50%;
+  }
+}
+@media (max-width: 900px) {
+  .hero-section .left {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 767px) {
+  .hero-section .left {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.hero-section .left .brain-wrapper {
+  width: 605px;
+  height: auto;
+}
+@media (max-width: 1920px) {
+  .hero-section .left .brain-wrapper {
+    width: 560px;
+  }
+}
+@media (max-width: 1680px) {
+  .hero-section .left .brain-wrapper {
+    width: 500px;
+  }
+}
+@media (max-width: 1440px) {
+  .hero-section .left .brain-wrapper {
+    width: 450px;
+  }
+}
+@media (max-width: 1366px) {
+  .hero-section .left .brain-wrapper {
+    width: 400px;
+  }
+}
+@media (max-width: 1202px) {
+  .hero-section .left .brain-wrapper {
+    width: 370px;
+  }
+}
+@media (max-width: 900px) {
+  .hero-section .left .brain-wrapper {
+    width: 330px;
+  }
+}
+@media (max-width: 775px) {
+  .hero-section .left .brain-wrapper {
+    width: 300px;
+  }
+}
+@media (max-width: 767px) {
+  .hero-section .left .brain-wrapper {
+    width: 250px;
+  }
+}
+@media (max-width: 520px) {
+  .hero-section .left .brain-wrapper {
+    width: 220px;
+  }
+}
+@media (max-width: 395px) {
+  .hero-section .left .brain-wrapper {
+    width: 180px;
+  }
+}
+.hero-section .left .brain-wrapper img {
+  width: 100%;
+  height: auto;
+}
+.hero-section .right {
+  color: #203F6B;
+  width: 50%;
+}
+@media (max-width: 1310px) {
+  .hero-section .right {
+    width: 55%;
+  }
+}
+@media (max-width: 1280px) {
+  .hero-section .right {
+    width: 60%;
+  }
+}
+@media (max-width: 1024px) {
+  .hero-section .right {
+    width: 50%;
+  }
+}
+@media (max-width: 767px) {
+  .hero-section .right {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+}
+.hero-section .right h3 {
+  margin-bottom: 20px;
+}
+@media (max-width: 1140px) {
+  .hero-section .right p br {
+    display: none;
+  }
+}
+
+.about-section {
+  position: relative;
+  padding-top: clamp(5rem, -5.7875rem + 12.6354vw, 9.375rem);
+}
+.about-section .container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.about-section .container ul li {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 190px;
+}
+@media (max-width: 1680px) {
+  .about-section .container ul li {
+    margin-bottom: 100px;
+  }
+}
+@media (max-width: 1280px) {
+  .about-section .container ul li {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 920px) {
+  .about-section .container ul li {
+    margin-bottom: 150px;
+  }
+}
+@media (max-width: 720px) {
+  .about-section .container ul li {
+    margin: 10px !important;
+    width: 40%;
+    margin-bottom: 10px !important;
+    justify-content: center !important;
+  }
+}
+.about-section .container ul li .img-wrap img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 1440px) {
+  .about-section .container ul li .img-wrap {
+    width: 350px;
+    height: auto;
+  }
+}
+@media (max-width: 1366px) {
+  .about-section .container ul li .img-wrap {
+    width: 300px;
+    height: auto;
+  }
+}
+@media (max-width: 1024px) {
+  .about-section .container ul li .img-wrap {
+    width: 250px;
+    height: auto;
+  }
+}
+@media (max-width: 720px) {
+  .about-section .container ul li .img-wrap {
+    width: 100%;
+    height: auto;
+  }
+}
+.about-section .container ul li.center-text {
+  width: 60%;
+}
+.about-section .container ul li:first-child {
+  margin-top: 97px;
+  justify-content: flex-start;
+}
+@media (max-width: 1280px) {
+  .about-section .container ul li:first-child {
+    margin-top: 50px;
+  }
+}
+.about-section .container ul li:nth-child(2) {
+  justify-content: flex-end;
+}
+.about-section .container ul li:nth-child(3) {
+  margin-top: 150px;
+  margin-bottom: 0;
+}
+@media (max-width: 1280px) {
+  .about-section .container ul li:nth-child(3) {
+    margin-top: 60px;
+  }
+}
+.about-section .container ul li:last-child {
+  margin-bottom: 0;
+}
+.about-section .container .center-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 270px;
+}
+@media (max-width: 1800px) {
+  .about-section .container .center-text {
+    padding-top: 350px;
+  }
+}
+@media (max-width: 1680px) {
+  .about-section .container .center-text {
+    padding-top: 300px;
+  }
+}
+@media (max-width: 1280px) {
+  .about-section .container .center-text {
+    padding-top: 230px;
+  }
+}
+@media (max-width: 720px) {
+  .about-section .container .center-text {
+    position: relative;
+    padding-top: 0;
+    margin-top: 70px;
+  }
+}
+.about-section .container .center-text p {
+  text-align: center;
+  margin-bottom: 0;
+}
+@media (max-width: 945px) {
+  .about-section .container .center-text br {
+    display: none;
+  }
+}
+
+.Areas-of-Clinical-Focus .top-text {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, -3.6643rem + 7.2202vw, 5rem);
+}
+@media (max-width: 600px) {
+  .Areas-of-Clinical-Focus .top-text br {
+    display: none;
+  }
+}
+.Areas-of-Clinical-Focus .clinical-swiper {
+  padding-bottom: 80px;
+}
+@media (max-width: 767px) {
+  .Areas-of-Clinical-Focus .clinical-swiper {
+    padding-bottom: 60px;
+  }
+}
+.Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide {
+  width: 20%;
+}
+.Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide .card-img {
+  width: 100%;
+}
+.Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide .card-img img {
+  width: 100%;
+}
+.Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide h4 {
+  text-align: center;
+  margin-top: 20px;
+}
+.Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
+  width: 100px;
+  border-radius: 0;
+  margin: 0 !important;
+  transition: all 0.8s;
+  height: 5px;
+}
+@media (max-width: 767px) {
+  .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
+    width: 60px;
+    height: 5px;
+  }
+}
+@media (max-width: 520px) {
+  .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
+    width: 40px;
+    height: 5px;
+  }
+}
+@media (max-width: 350px) {
+  .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
+    width: 30px;
+    height: 5px;
+  }
+}
+
+.Guiding-Principles .img-wrap {
+  margin-bottom: 50px;
+}
+.Guiding-Principles .div-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.Guiding-Principles .div-wrapper .img-wrap {
+  width: 1228px;
+  height: auto;
+}
+@media (max-width: 1920px) {
+  .Guiding-Principles .div-wrapper .img-wrap {
+    width: 1000px;
+  }
+}
+@media (max-width: 1680px) {
+  .Guiding-Principles .div-wrapper .img-wrap {
+    width: 800px;
+  }
+}
+@media (max-width: 1440px) {
+  .Guiding-Principles .div-wrapper .img-wrap {
+    width: 700px;
+  }
+}
+@media (max-width: 1280px) {
+  .Guiding-Principles .div-wrapper .img-wrap {
+    width: 500px;
+    margin-bottom: 30px;
+  }
+}
+.Guiding-Principles .div-wrapper .img-wrap img {
+  width: 100%;
+  height: auto;
+}
+.Guiding-Principles .div-wrapper p {
+  text-align: center;
+  padding: 0 200px;
+}
+@media (max-width: 1280px) {
+  .Guiding-Principles .div-wrapper p {
+    padding: 0 120px;
+  }
+}
+@media (max-width: 1024px) {
+  .Guiding-Principles .div-wrapper p {
+    padding: 0 80px;
+  }
+}
+@media (max-width: 767px) {
+  .Guiding-Principles .div-wrapper p {
+    padding: 0;
+  }
+}
+
+.clinical-evaluation p.top-para {
+  text-align: center;
+}
+.clinical-evaluation .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 1024px) {
+  .clinical-evaluation .wrapper {
+    flex-direction: column-reverse;
+  }
+}
+.clinical-evaluation .left {
+  width: 40%;
+}
+@media (max-width: 1024px) {
+  .clinical-evaluation .left {
+    width: 100%;
+  }
+}
+.clinical-evaluation .left ul li {
+  display: flex;
+  align-items: center;
+  background: #F1FCFF;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.clinical-evaluation .left ul li p {
+  margin-bottom: 0;
+  font-size: clamp(0.875rem, 0.2586rem + 0.722vw, 1.125rem);
+}
+.clinical-evaluation .left ul li .text {
+  margin-left: 20px;
+}
+.clinical-evaluation .right {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 1024px) {
+  .clinical-evaluation .right {
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .clinical-evaluation .right .img-wrap {
+    width: 300px;
+    height: auto;
+  }
+}
+@media (max-width: 767px) {
+  .clinical-evaluation .right .img-wrap {
+    width: 200px;
+    height: auto;
+  }
+}
+.clinical-evaluation .right .img-wrap img {
+  width: 100%;
+}/*# sourceMappingURL=home.css.map */
