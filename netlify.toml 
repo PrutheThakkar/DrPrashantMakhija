@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18.20.4"
+  NPM_FLAGS = "--legacy-peer-deps"
+```
+
+Also add a `.nvmrc` file in your project root:
+```
+18.20.4
+```
+
+Then also go to **Netlify → Site Settings → Environment Variables** and add:
+```
+NODE_VERSION = 18.20.4
