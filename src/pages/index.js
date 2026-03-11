@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Layout from "../components/layout"
 import ClinicalFocusSlider from "../components/ClinicalFocusSlider"
 import AppointmentForm from "../components/AppointmentForm";
 
