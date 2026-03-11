@@ -8,6 +8,8 @@ const InsidePage = ({ pageId }) => {
   )
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     const updateBackground = () => {
       if (window.innerWidth <= 768) {
         setBgImage("https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/indise-banner-mob.jpg")

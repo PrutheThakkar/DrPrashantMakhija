@@ -22,6 +22,8 @@ const Header = () => {
   }
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     const handleKeyDown = e => {
       if (e.key === "Escape") {
         closeMega()
@@ -34,7 +36,8 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    // Lock body scroll when mobile menu is open
+    if (typeof window === "undefined") return
+
     if (mobileOpen) {
       document.body.style.overflow = "hidden"
     } else {
@@ -46,6 +49,8 @@ const Header = () => {
   }, [mobileOpen])
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     const menuItems = document.querySelectorAll(".menu-item[data-target]")
 
     const handleScrollClick = e => {
@@ -85,7 +90,7 @@ const Header = () => {
     <>
       <header>
         <div className="container wrapper">
-          <a href="/home" className="logo">
+          <a href="/" className="logo">
             <img
               src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/logo-img.svg"
               alt="Logo"
@@ -95,7 +100,7 @@ const Header = () => {
           {/* Desktop Menu */}
           <ul className="menu-list">
             <li className="menu-item">
-              <a href="/home">Home</a>
+              <a href="/">Home</a>
             </li>
 
             <li data-target="about-section" className="menu-item">
@@ -111,10 +116,6 @@ const Header = () => {
                 Expertise
               </a>
             </li>
-
-            {/* <li className="menu-item">
-              <a href="#">Insights</a>
-            </li> */}
 
             <li className="menu-item contact">
               <a href="#ContactForm">Contact</a>
