@@ -130,7 +130,6 @@ const HomePage = ({ data }) => {
           </div>
         </section>
 
-
         <section id="Guiding-Principles" className="Guiding-Principles">
           <div className="container">
             <div className="div-wrapper">

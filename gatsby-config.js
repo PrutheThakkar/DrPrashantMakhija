@@ -42,7 +42,7 @@ module.exports = {
     author: `@Prashant Makhija`,
     siteUrl:
       process.env.GATSBY_WEBSITE_URL ||
-      "https://prashant.studiosentientdemo.com",
+      "https://wp.drprashantmakhija.com",
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -54,7 +54,7 @@ module.exports = {
       options: {
         url:
           process.env.GATSBY_WPGRAPHQL_URL ||
-          "https://prashant.studiosentientdemo.com/graphql",
+          "https://wp.drprashantmakhija.com/graphql",
       },
     },
   ],
