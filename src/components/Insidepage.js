@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 const InsidePage = ({ pageId }) => {
 
   const [bgImage, setBgImage] = useState(
-    "https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/indise-banner-desk.jpg"
+    "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-desk.jpg"
   )
 
   useEffect(() => {
@@ -12,9 +12,9 @@ const InsidePage = ({ pageId }) => {
 
     const updateBackground = () => {
       if (window.innerWidth <= 768) {
-        setBgImage("https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/indise-banner-mob.jpg")
+        setBgImage("https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-mob.jpg")
       } else {
-        setBgImage("https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/indise-banner-desk.jpg")
+        setBgImage("https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-desk.jpg")
       }
     }
 
