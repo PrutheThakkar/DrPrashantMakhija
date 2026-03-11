@@ -22,6 +22,8 @@ const Header = () => {
   }
 
   useEffect(() => {
+    if (typeof document === "undefined") return
+
     const handleKeyDown = e => {
       if (e.key === "Escape") {
         closeMega()
@@ -30,22 +32,25 @@ const Header = () => {
     }
 
     document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
   }, [])
 
   useEffect(() => {
-    // Lock body scroll when mobile menu is open
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
+    if (typeof document === "undefined") return
+
+    document.body.style.overflow = mobileOpen ? "hidden" : ""
+
     return () => {
       document.body.style.overflow = ""
     }
   }, [mobileOpen])
 
   useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") return
+
     const menuItems = document.querySelectorAll(".menu-item[data-target]")
 
     const handleScrollClick = e => {
@@ -70,14 +75,14 @@ const Header = () => {
       closeMobile()
     }
 
-    menuItems.forEach(item =>
+    menuItems.forEach(item => {
       item.addEventListener("click", handleScrollClick)
-    )
+    })
 
     return () => {
-      menuItems.forEach(item =>
+      menuItems.forEach(item => {
         item.removeEventListener("click", handleScrollClick)
-      )
+      })
     }
   }, [])
 
@@ -85,17 +90,16 @@ const Header = () => {
     <>
       <header>
         <div className="container wrapper">
-          <a href="/home" className="logo">
+          <a href="/" className="logo">
             <img
               src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/logo-img.svg"
               alt="Logo"
             />
           </a>
 
-          {/* Desktop Menu */}
           <ul className="menu-list">
             <li className="menu-item">
-              <a href="/home">Home</a>
+              <a href="/">Home</a>
             </li>
 
             <li data-target="about-section" className="menu-item">
@@ -112,21 +116,17 @@ const Header = () => {
               </a>
             </li>
 
-            {/* <li className="menu-item">
-              <a href="#">Insights</a>
-            </li> */}
-
             <li className="menu-item contact">
               <a href="#ContactForm">Contact</a>
             </li>
           </ul>
 
-          {/* Burger Button */}
           <button
             className={`burger-btn ${mobileOpen ? "open" : ""}`}
             onClick={toggleMobile}
             aria-label="Toggle mobile menu"
             aria-expanded={mobileOpen}
+            type="button"
           >
             <span className="burger-line"></span>
             <span className="burger-line"></span>
@@ -135,21 +135,23 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <div
         className={`mobile-overlay ${mobileOpen ? "open" : ""}`}
         onClick={closeMobile}
       ></div>
 
-      {/* Mobile Menu Drawer */}
       <nav className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
         <ul className="mobile-menu-list">
           <li className="mobile-menu-item">
-            <a href="#" onClick={closeMobile}>Home</a>
+            <a href="/" onClick={closeMobile}>
+              Home
+            </a>
           </li>
 
           <li data-target="about-section" className="mobile-menu-item">
-            <a href="#about-section" onClick={closeMobile}>About</a>
+            <a href="#about-section" onClick={closeMobile}>
+              About
+            </a>
           </li>
 
           <li
@@ -161,12 +163,10 @@ const Header = () => {
             </a>
           </li>
 
-          <li className="mobile-menu-item">
-            <a href="#" onClick={closeMobile}>Insights</a>
-          </li>
-
           <li className="mobile-menu-item contact">
-            <a href="#" onClick={closeMobile}>Contact</a>
+            <a href="#ContactForm" onClick={closeMobile}>
+              Contact
+            </a>
           </li>
         </ul>
       </nav>
