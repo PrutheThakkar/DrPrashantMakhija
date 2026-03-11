@@ -42,7 +42,7 @@ module.exports = {
     author: `@Prashant Makhija`,
     siteUrl:
       process.env.GATSBY_WEBSITE_URL ||
-      "https://app.drprashantmakhija.com/",
+      "https://app.drprashantmakhija.com",
   },
   plugins: [
     `gatsby-plugin-image`,
