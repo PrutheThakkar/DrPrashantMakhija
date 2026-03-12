@@ -4,7 +4,7 @@ import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const WEBSITE_URL = process.env.GATSBY_BASE_URL;
+const WEBSITE_URL = process.env.GATSBY_WEBSITE_URL;
 const CF7_FORM_ID = process.env.GATSBY_CF7_FORM_ID || "7";
 
 const AppointmentForm = () => {
@@ -23,7 +23,7 @@ const AppointmentForm = () => {
       setFormMessage("");
 
       if (!WEBSITE_URL) {
-        setFormMessage("Missing GATSBY_BASE_URL in .env");
+        setFormMessage("Missing GATSBY_WEBSITE_URL in .env");
         setSubmitting(false);
         return;
       }
