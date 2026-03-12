@@ -41,10 +41,10 @@ const ExpertisePage = ({ data }) => {
                   />
                 )}
 
-                <Link to="/contact-us" className="expertise-btn btn-appt">
+                {/* <Link to="/contact-us" className="expertise-btn btn-appt">
                   Know More
                 </Link>
-                
+                 */}
               </div>
             </div>
             </div>

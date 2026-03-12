@@ -59,6 +59,7 @@
 .expertise-list-section .expertise-row .right h3 {
   margin-bottom: clamp(1.563rem, -0.7474rem + 2.7061vw, 2.5rem);
   color: #1653BF;
+  font-weight: bold;
 }
 
 .burger-btn {
