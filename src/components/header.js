@@ -107,18 +107,22 @@ const Header = () => {
               <a href="#about-section">About</a>
             </li>
 
-            <li
+             <li className="menu-item">
+              <a href="/expertise">Expertise</a>
+            </li>
+
+            {/* <li
               data-target="Areas-of-Clinical-focus"
               className={`menu-item has-mega active ${megaOpen ? "open" : ""}`}
               id="expertise-trigger"
             >
-              <a href="#Areas-of-Clinical-focus" onClick={toggleMega}>
+              <a href="/expertise" onClick={toggleMega}>
                 Expertise
               </a>
-            </li>
+            </li> */}
 
             <li className="menu-item contact">
-              <a href="#ContactForm">Contact</a>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
 

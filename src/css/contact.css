@@ -38,6 +38,7 @@
 .appointment-form .form-group input::placeholder,
 .appointment-form .form-group textarea::placeholder {
   color: #aaa;
+  text-transform: capitalize;
   font-size: 14px;
 }
 .appointment-form .form-group input:focus,

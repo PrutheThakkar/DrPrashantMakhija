@@ -6,6 +6,11 @@
   background-size: cover;
   margin-bottom: 0;
 }
+@media (max-width: 1440px) {
+  .hero-section {
+    height: 90vh;
+  }
+}
 @media (max-width: 1024px) {
   .hero-section {
     height: 700px;
@@ -173,6 +178,11 @@
     margin-bottom: 100px;
   }
 }
+@media (max-width: 1440px) {
+  .about-section .container ul li {
+    margin-bottom: 60px;
+  }
+}
 @media (max-width: 1280px) {
   .about-section .container ul li {
     margin-bottom: 80px;
@@ -261,6 +271,11 @@
 @media (max-width: 1680px) {
   .about-section .container .center-text {
     padding-top: 300px;
+  }
+}
+@media (max-width: 1440px) {
+  .about-section .container .center-text {
+    padding-top: 228px;
   }
 }
 @media (max-width: 1280px) {
@@ -460,3 +475,5 @@
 .clinical-evaluation .right .img-wrap img {
   width: 100%;
 }/*# sourceMappingURL=home.css.map */
+
+

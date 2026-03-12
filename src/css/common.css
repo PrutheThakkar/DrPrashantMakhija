@@ -347,6 +347,7 @@ h1 {
   font-family: "Inter-VariableFont";
   color: #1653BF;
   margin-bottom: 30px;
+  font-weight: bold;
 }
 @media (max-width: 1365px) {
   h1 {
@@ -357,10 +358,12 @@ h1 {
 h2 {
   font-size: clamp(2.188rem, -0.248rem + 2.7067vw, 3rem);
   text-align: center;
-  margin-bottom: clamp(2.188rem, -4.7456rem + 8.1213vw, 5rem);
+  margin-bottom: clamp(2.188rem, -4.7456rem + 8.1213vw, 3.175rem);
   display: flex;
   flex-direction: column;
   color: #1653BF;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 @media (max-width: 767px) {
   h2 {
@@ -508,13 +511,12 @@ main {
   /* height: 200vh; */
   /* padding: 20px; */
 } 
-.btn-primary {
+/* .btn-primary {
   background: #FFFFFF;
   border: 1px solid var(--color-primary);
   color: var(--color-primary);
   padding: 12px 20px;
   border-radius: 15px;
-  /* box-shadow: 0px 5px 7px 0px rgba(158, 1, 1, 0.3); */
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -528,7 +530,7 @@ main {
   }
 }
 .btn-primary span {
-  /* Vector */
+
   width: 16px;
   height: 16px;
   margin-left: 10px;
@@ -540,7 +542,7 @@ main {
 }
 .btn-primary:hover svg {
   transform: rotate(45deg);
-}
+} */
 
 /* GLOBAL */
 .container {
@@ -663,13 +665,21 @@ header .wrapper ul li.contact {
 }
 header .wrapper ul li.contact a {
   background: #1653BF;
-  padding: 15px 40px;
+  padding: 15px 70px;
   border-radius: 50px;
   color: #fff;
 }
+@media (max-width:1366px) {
+  header .wrapper ul li.contact a {
+  background: #1653BF;
+  padding: 10px 40px;
+  border-radius: 50px;
+  color: #fff;
+}
+}
 
 .btn-wrap {
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 .btn {
@@ -684,7 +694,7 @@ header .wrapper ul li.contact a {
   letter-spacing: 0.02em;
   transition: border-color 0.3s ease;
   outline: none;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 .btn:hover {

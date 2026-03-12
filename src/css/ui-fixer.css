@@ -4,3 +4,186 @@
     text-align: center;
    
 }
+
+
+.Guiding-Principles.about{
+height: 800px;
+}
+@media (max-width:1920px) {
+    .Guiding-Principles.about{
+    height: 700px;
+    }
+}
+@media (max-width:1680px) {
+    .Guiding-Principles.about{
+    height: 600px;
+    }
+}
+@media (max-width:1280px) {
+    .Guiding-Principles.about{
+    height: 500px;
+    }
+}
+@media (max-width:1000px) {
+    .Guiding-Principles.about{
+    height: 400px;
+    }
+}
+@media (max-width:767px) {
+    .Guiding-Principles.about{
+    height: 300px;
+    }
+}
+
+.Guiding-Principles.about .div-wrapper{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.Guiding-Principles.about .div-wrapper .img-wrap, .Guiding-Principles.about .div-wrapper .img-wrap .gatsby-image-wrapper{
+    width: 100%;
+    height: 100%;
+}
+.Guiding-Principles.about .div-wrapper .img-wrap{
+margin-bottom: 0;
+}
+
+.Guiding-Principles.about .div-wrapper .img-wrap img {
+height: 100%;
+}
+.Guiding-Principles.about .div-wrapper .paragraph-wrappper{
+  position: absolute;
+  bottom: 0 ;
+  width: 100%;
+  padding-bottom: 30px;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background: #203F6B;
+background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59) 67%, rgba(108, 181, 228, 0) 100%);
+}
+.Guiding-Principles.about .div-wrapper .paragraph-wrappper p{
+    color: #fff;
+    margin-bottom: 0;
+}
+
+@media (max-width:685px) {
+     .Guiding-Principles.about .div-wrapper .paragraph-wrappper p{
+        padding: 0 20px;
+     }
+    .Guiding-Principles.about .div-wrapper .paragraph-wrappper p br{
+        display: none;
+    }
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.btn-wrap .btn {
+  display: inline-block;
+  padding: 18px 60px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #2a3fa0;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(220,235,255,0.6) 100%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  letter-spacing: 0.02em;
+  transition: all 0.8s ease;
+}
+
+.btn-wrap .btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50px;
+  padding: 2px;
+  background: linear-gradient(
+    180deg,
+    #2a3fa0 0%,        /* dark blue - top left */
+    #2a3fa0 30%,
+    #c0d0ef 60%,       /* light silver-blue - middle */
+    #e8eef8 80%,       /* near white - bottom right */
+    #ffffff 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn-wrap .btn:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(210,228,255,0.75) 100%);
+  color: #1a2d80;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(42, 63, 160, 0.15);
+}
+
+.about-section .container ul li .img-wrap{
+    width: 600px;
+    height: 300px;
+}
+@media (max-width:1920px) {
+    .about-section .container ul li .img-wrap{
+        width: 500px;
+        height: 280px;
+    }
+}
+@media (max-width:1680px) {
+    .about-section .container ul li .img-wrap{
+        width: 400px;
+        height: 250px;
+    }
+}
+@media (max-width:1440px) {
+    .about-section .container ul li .img-wrap{
+        width: 400px;
+        height: 220px;
+    }
+}
+@media (max-width:1280px) {
+    .about-section .container ul li .img-wrap{
+        width: 370px;
+        height: 200px;
+    }
+}
+@media (max-width:1000px) {
+    .about-section .container ul li .img-wrap{
+        width: 300px;
+        height: 180px;
+    }
+}
+@media (max-width:767px) {
+    .about-section .container ul li .img-wrap{
+        width: 250px;
+        height: 150px;
+    }
+}
+@media (max-width:540px) {
+    .about-section .container ul li .img-wrap{
+        width: 250px;
+        height: auto;
+    }
+}
+.about-section .container ul li .img-wrap .gatsby-image-wrapper{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+}
+.about-section .container ul li .img-wrap img{
+   width: 100%;
+   height: 100%;
+    object-fit: cover;
+   object-position: center;
+}

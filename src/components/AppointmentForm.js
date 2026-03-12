@@ -120,7 +120,7 @@ const AppointmentForm = () => {
           </div>
 
           <div className="btn-wrap">
-            <button type="submit" className="btn-primary btn-appt" disabled={isSubmitting}>
+            <button type="submit" className="btn" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Consult Now"}
             </button>
           </div>

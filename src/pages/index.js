@@ -49,8 +49,8 @@ const HomePage = ({ data }) => {
               )}
 
               <div className="btn-wrap">
-                <a href="#" className="btn">
-                  Book an Appointment
+                <a href="#ContactForm" className="btn">
+                  Book An Appointment
                 </a>
               </div>
             </div>
@@ -130,8 +130,8 @@ const HomePage = ({ data }) => {
           </div>
         </section>
 
-        <section id="Guiding-Principles" className="Guiding-Principles">
-          <div className="container">
+        <section id="Guiding-Principles " className="Guiding-Principles about">
+          {/* <div className="container"> */}
             <div className="div-wrapper">
               <div className="img-wrap">
 
@@ -148,14 +148,15 @@ const HomePage = ({ data }) => {
                 )}
               </div>
 
+              <div className="paragraph-wrappper">
+              <span dangerouslySetInnerHTML={{ __html: pageData.aboutDoctorPara }} />
 
-              <p dangerouslySetInnerHTML={{ __html: pageData.aboutDoctorPara }} />
-
-              <a href="#" className="btn-appt">
+              {/* <a href="#" className="btn-appt">
                 Know More
-              </a>
+              </a> */}
+              </div>
             </div>
-          </div>
+          {/* </div> */}
         </section>
 
         <ClinicalFocusSlider pageData={pageData} />
@@ -184,7 +185,7 @@ const HomePage = ({ data }) => {
                 )}
               </div>
 
-              <p dangerouslySetInnerHTML={{ __html: pageData.guidingPrinciplePara }} />
+              <span dangerouslySetInnerHTML={{ __html: pageData.guidingPrinciplePara }} />
 
             </div>
           </div>
@@ -241,7 +242,7 @@ const HomePage = ({ data }) => {
           </div>
         </section>
 
-        <section className="Contact-Section" id="ContactForm">
+        {/* <section className="Contact-Section" id="ContactForm">
           <div className="container">
             <h2>
               <span>Send your details to schedule a neurology consultation</span>
@@ -249,7 +250,7 @@ const HomePage = ({ data }) => {
             </h2>
             <AppointmentForm />
           </div>
-        </section>
+        </section> */}
       </>
 
     </Layout>
@@ -277,14 +278,14 @@ export const query = graphql`
           aboutImageList {
             node {
               altText
-              gatsbyImage(width: 400, height: 200, layout: CONSTRAINED, placeholder: BLURRED)
+              gatsbyImage(width: 600, height: 300, layout: CONSTRAINED, placeholder: BLURRED)
             }
           }
         }
         aboutDoctorImage{
          node {
             altText
-            gatsbyImage(height: 614, width: 1228, placeholder: BLURRED, layout: CONSTRAINED)
+            gatsbyImage(height: 800, width: 1920, placeholder: BLURRED, layout: CONSTRAINED)
           }
         }
         aboutDoctorPara
