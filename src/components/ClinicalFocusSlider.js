@@ -69,7 +69,7 @@ const ClinicalFocusSlider = ({ pageData }) => {
               breakpoints={{
                 0: { slidesPerView: 1, slidesPerGroup: 1 },
                 350: { slidesPerView: 2, slidesPerGroup: 2 },
-                600: { slidesPerView: 3, slidesPerGroup: 3 },
+                720: { slidesPerView: 3, slidesPerGroup: 2 },
                 1024: { slidesPerView: 4, slidesPerGroup: 4 },
                 1280: { slidesPerView: 4, slidesPerGroup: 4, spaceBetween: 50 },
               }}
@@ -85,7 +85,8 @@ const ClinicalFocusSlider = ({ pageData }) => {
                         />
                       )}
                     </div>
-                    <h4>{node.title}</h4>
+                    {/* <h4>{node.title}</h4> */}
+                     <h4 dangerouslySetInnerHTML={{ __html: node.title }} />
                   </Link>
                 </SwiperSlide>
               ))}

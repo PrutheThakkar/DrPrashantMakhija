@@ -58,7 +58,7 @@ const Footer = () => {
               <a href="tel:+08291101001">08291101001</a>
             </li>
 
-            {/* <li>
+            <li>
               <svg
                 width="16"
                 height="16"
@@ -72,8 +72,8 @@ const Footer = () => {
                 />
               </svg>
 
-              <a href="drprashantMakhija@gmail.com">enquire@wockhardthospitals.com</a>
-            </li> */}
+              <a href=" mailto:connectdrprashantm@gmail.com">connectdrprashantm@gmail.com</a>
+            </li>
           </ul>
         </div>
 

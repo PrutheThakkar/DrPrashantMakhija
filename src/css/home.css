@@ -310,11 +310,11 @@
   }
 }
 .Areas-of-Clinical-Focus .clinical-swiper {
-  padding-bottom: 80px;
+  /* padding-bottom: 80px; */
 }
 @media (max-width: 767px) {
   .Areas-of-Clinical-Focus .clinical-swiper {
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
   }
 }
 .Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide {
@@ -329,6 +329,11 @@
 .Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide h4 {
   text-align: center;
   margin-top: 20px;
+}
+@media (max-width:767px) {
+  .Areas-of-Clinical-Focus .swiper-wrapper .swiper-slide h4 br{
+    display: none;
+  }
 }
 .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
   width: 100px;
@@ -413,6 +418,10 @@
   .Guiding-Principles .div-wrapper p {
     padding: 0;
   }
+}
+
+.div-wrapper p:last-child{
+margin-bottom: 0;
 }
 
 .clinical-evaluation p.top-para {

@@ -83,6 +83,13 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
   align-items: center;
   transition: all 0.5s;
 }
+@media (max-width:767px) {
+    .btn-wrap {
+ 
+  justify-content: center;
+  
+}
+}
 
 .btn-wrap .btn {
   display: inline-block;
@@ -98,6 +105,17 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
   position: relative;
   letter-spacing: 0.02em;
   transition: all 0.8s ease;
+}
+@media (max-width:1440px) {
+    .btn-wrap .btn {
+        padding: 12px 40px; 
+    }
+}
+@media (max-width:1000px) {
+    .btn-wrap .btn {
+        padding: 10px 30px; 
+          font-size: 14px;
+    }
 }
 
 .btn-wrap .btn::before {
