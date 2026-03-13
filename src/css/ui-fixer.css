@@ -187,3 +187,129 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
     object-fit: cover;
    object-position: center;
 }
+
+
+
+
+.Areas-of-Clinical-Focus .clinical-swiper-wrapper {
+  position: relative;
+  padding: 0 50px;
+}
+
+@media (max-width: 600px) {
+  .Areas-of-Clinical-Focus .clinical-swiper-wrapper {
+    padding: 0 40px;
+  }
+}
+
+/* Hide default swiper nav */
+.Areas-of-Clinical-Focus .swiper-button-next,
+.Areas-of-Clinical-Focus .swiper-button-prev {
+  display: none;
+}
+
+/* Custom nav buttons */
+.Areas-of-Clinical-Focus .clinical-prev,
+.Areas-of-Clinical-Focus .clinical-next {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-60%);
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid #2a3fa0;
+  background: transparent;
+  color: #2a3fa0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+@media (max-width:1920px) {
+   .Areas-of-Clinical-Focus .clinical-prev,
+.Areas-of-Clinical-Focus .clinical-next {
+    top: 33%;
+} 
+}
+@media (max-width:1680px) {
+   .Areas-of-Clinical-Focus .clinical-prev,
+.Areas-of-Clinical-Focus .clinical-next {
+    top: 30%;
+} 
+}
+@media (max-width:825px) {
+   .Areas-of-Clinical-Focus .clinical-prev,
+.Areas-of-Clinical-Focus .clinical-next {
+    top: 25%;
+    width: 30px;
+  height: 30px;
+} 
+}
+@media (max-width:500px) {
+   .Areas-of-Clinical-Focus .clinical-prev,
+.Areas-of-Clinical-Focus .clinical-next {
+    top: 22%;
+} 
+}
+@media (max-width:350px) {
+   .Areas-of-Clinical-Focus .clinical-prev,
+.Areas-of-Clinical-Focus .clinical-next {
+    top: 28%;
+} 
+}
+
+.Areas-of-Clinical-Focus .clinical-prev svg,
+.Areas-of-Clinical-Focus .clinical-next svg {
+  width: 18px;
+  height: 18px;
+}
+@media (max-width:825px) {
+.Areas-of-Clinical-Focus .clinical-prev svg,
+.Areas-of-Clinical-Focus .clinical-next svg {
+   width: 15px;
+  height: 15px;
+} 
+}
+
+.Areas-of-Clinical-Focus .clinical-prev:hover,
+.Areas-of-Clinical-Focus .clinical-next:hover {
+  background: #2a3fa0;
+  color: #fff;
+}
+
+.Areas-of-Clinical-Focus .clinical-prev.swiper-button-disabled,
+.Areas-of-Clinical-Focus .clinical-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.Areas-of-Clinical-Focus .clinical-prev {
+  left: 0;
+}
+
+.Areas-of-Clinical-Focus .clinical-next {
+  right: 0;
+}
+
+/* Pagination dots */
+.Areas-of-Clinical-Focus .swiper-pagination {
+  position: relative;
+  margin-top: 30px;
+}
+
+.Areas-of-Clinical-Focus .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #c0cce8;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.Areas-of-Clinical-Focus .swiper-pagination-bullet-active {
+  background: #2a3fa0;
+  width: 24px;
+  border-radius: 4px;
+}

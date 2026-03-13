@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper/modules"
+import { Pagination, Navigation } from "swiper/modules"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import "swiper/css"
 import "swiper/css/pagination"
+import "swiper/css/navigation"
 
 const ClinicalFocusSlider = ({ pageData }) => {
   const [isClient, setIsClient] = useState(false)
@@ -52,38 +53,56 @@ const ClinicalFocusSlider = ({ pageData }) => {
         />
 
         {isClient && (
-          <Swiper
-            className="clinical-swiper"
-            modules={[Pagination]}
-            pagination={{ clickable: true }}
-            grabCursor={true}
-            slidesPerView={4}
-            slidesPerGroup={4}
-            spaceBetween={30}
-            breakpoints={{
-              0: { slidesPerView: 1, slidesPerGroup: 1 },
-              350: { slidesPerView: 2, slidesPerGroup: 2 },
-              600: { slidesPerView: 3, slidesPerGroup: 3 },
-              1024: { slidesPerView: 4, slidesPerGroup: 4 },
-              1280: { slidesPerView: 4, slidesPerGroup: 4, spaceBetween: 50 },
-            }}
-          >
-            {slides.map(({ node }, index) => (
-              <SwiperSlide key={index}>
-                <Link to={`/expertise#${node.slug}`} className="clinical-card">
-                  <div className="card-img">
-                    {node.featuredImage?.node?.mediaItemUrl && (
-                      <img
-                        src={node.featuredImage.node.mediaItemUrl}
-                        alt={node.featuredImage.node.altText || node.title}
-                      />
-                    )}
-                  </div>
-                  <h4>{node.title}</h4>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className="clinical-swiper-wrapper">
+            <Swiper
+              className="clinical-swiper"
+              modules={[Pagination, Navigation]}
+              pagination={{ clickable: true }}
+              navigation={{
+                nextEl: ".clinical-next",
+                prevEl: ".clinical-prev",
+              }}
+              grabCursor={true}
+              slidesPerView={4}
+              slidesPerGroup={4}
+              spaceBetween={30}
+              breakpoints={{
+                0: { slidesPerView: 1, slidesPerGroup: 1 },
+                350: { slidesPerView: 2, slidesPerGroup: 2 },
+                600: { slidesPerView: 3, slidesPerGroup: 3 },
+                1024: { slidesPerView: 4, slidesPerGroup: 4 },
+                1280: { slidesPerView: 4, slidesPerGroup: 4, spaceBetween: 50 },
+              }}
+            >
+              {slides.map(({ node }, index) => (
+                <SwiperSlide key={index}>
+                  <Link to={`/expertise#${node.slug}`} className="clinical-card">
+                    <div className="card-img">
+                      {node.featuredImage?.node?.mediaItemUrl && (
+                        <img
+                          src={node.featuredImage.node.mediaItemUrl}
+                          alt={node.featuredImage.node.altText || node.title}
+                        />
+                      )}
+                    </div>
+                    <h4>{node.title}</h4>
+                  </Link>
+                </SwiperSlide>
+              ))}
+
+            </Swiper>
+            {/* Custom Nav Buttons */}
+            <button className="clinical-prev" aria-label="Previous slide">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button className="clinical-next" aria-label="Next slide">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
         )}
       </div>
     </section>
