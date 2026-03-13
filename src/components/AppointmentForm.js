@@ -18,7 +18,9 @@ const AppointmentForm = () => {
     message: Yup.string().required("Message is required"),
   });
 
-  const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
+const N8N_WEBHOOK_URL = "https://pruthe.app.n8n.cloud/webhook-test/e804e415-42cd-45f4-8d91-6bd2adc1b6ad";
+
+const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       setFormMessage("");
 
@@ -54,14 +56,29 @@ const AppointmentForm = () => {
         return;
       }
 
-      // if (response?.data?.status === "mail_sent") {
-      //   resetForm();
-      //   setSubmitting(false);
-      //   navigate("/thank-you/");
-      //   return;
-      // }
-
       if (response?.data?.status === "mail_sent") {
+
+        // ✅ SEND TO N8N WEBHOOK
+        try {
+          await fetch(N8N_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              firstName: values.firstName,
+              lastName: values.lastName,
+              phone: values.phone,
+              email: values.email,
+              message: values.message,
+              submittedAt: new Date().toISOString(),
+              source: "drprashantmakhija.com",
+            }),
+          });
+        } catch (n8nError) {
+          // Don't block user if n8n fails
+          console.error("n8n webhook error:", n8nError);
+        }
+        // ✅ END N8N
+
         resetForm();
         setSubmitting(false);
         setFormMessage("Thank you! Your message has been sent. We'll get back to you shortly.");
@@ -85,7 +102,6 @@ const AppointmentForm = () => {
       setSubmitting(false);
     }
   };
-
   return (
     <Formik
       initialValues={{ firstName: "", lastName: "", phone: "", email: "", message: "" }}
@@ -143,3 +159,5 @@ const AppointmentForm = () => {
 };
 
 export default AppointmentForm;
+
+
