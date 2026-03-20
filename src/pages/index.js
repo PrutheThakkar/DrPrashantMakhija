@@ -32,7 +32,7 @@ const HomePage = ({ data }) => {
                   />
                 ) : (
                   <img
-                    src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Brain.png"
+                    src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                     alt="brain img"
                   />
                 )}
@@ -77,25 +77,25 @@ const HomePage = ({ data }) => {
             <ul>
               <li className="img-item">
                 <div className="img-wrap">
-                  <img src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Neuron.jpg" alt="Neuron cells" />
+                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Neuron.jpg" alt="Neuron cells" />
                 </div>
               </li>
 
               <li className="img-item">
                 <div className="img-wrap">
-                  <img src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Brain.jpg" alt="Brain scan" />
+                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.jpg" alt="Brain scan" />
                 </div>
               </li>
 
               <li className="img-item">
                 <div className="img-wrap">
-                  <img src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Diagnosis-1.jpg" alt="Diagnosis" />
+                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Diagnosis-1.jpg" alt="Diagnosis" />
                 </div>
               </li>
 
               <li className="img-item">
                 <div className="img-wrap">
-                  <img src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/MRI.jpg" alt="MRI scan" />
+                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/MRI.jpg" alt="MRI scan" />
                 </div>
               </li>
             </ul>
@@ -142,7 +142,7 @@ const HomePage = ({ data }) => {
                   />
                 ) : (
                   <img
-                    src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Brain.png"
+                    src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                     alt="brain img"
                   />
                 )}
@@ -179,7 +179,7 @@ const HomePage = ({ data }) => {
                   />
                 ) : (
                   <img
-                    src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Brain.png"
+                    src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                     alt="brain img"
                   />
                 )}
@@ -230,7 +230,7 @@ const HomePage = ({ data }) => {
                     />
                   ) : (
                     <img
-                      src="https://prashant.studiosentientdemo.com/wp-content/uploads/2026/03/Brain.png"
+                      src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                       alt="brain img"
                     />
                   )}
@@ -328,3 +328,5 @@ export const query = graphql`
 
 
 export default HomePage
+
+

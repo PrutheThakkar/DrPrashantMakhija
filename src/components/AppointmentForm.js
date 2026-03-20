@@ -18,9 +18,7 @@ const AppointmentForm = () => {
     message: Yup.string().required("Message is required"),
   });
 
-const N8N_WEBHOOK_URL = "https://pruthe.app.n8n.cloud/webhook-test/e804e415-42cd-45f4-8d91-6bd2adc1b6ad";
-
-const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
+  const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       setFormMessage("");
 
@@ -58,9 +56,9 @@ const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
 
       if (response?.data?.status === "mail_sent") {
 
-        // ✅ SEND TO N8N WEBHOOK
+        // ✅ SEND TO N8N via Gatsby API (CORS fixed)
         try {
-          await fetch(N8N_WEBHOOK_URL, {
+          await fetch("/api/contact", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -69,13 +67,10 @@ const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
               phone: values.phone,
               email: values.email,
               message: values.message,
-              submittedAt: new Date().toISOString(),
-              source: "drprashantmakhija.com",
             }),
           });
         } catch (n8nError) {
-          // Don't block user if n8n fails
-          console.error("n8n webhook error:", n8nError);
+          console.error("n8n error:", n8nError);
         }
         // ✅ END N8N
 
@@ -89,7 +84,6 @@ const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
       setSubmitting(false);
     } catch (error) {
       console.error("CF7 submit error:", error);
-
       const status = error?.response?.status;
       const data = error?.response?.data;
       const msg =
@@ -97,11 +91,11 @@ const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
         (status ? `Request failed (HTTP ${status})` : "") ||
         error?.message ||
         "Unknown error";
-
       setFormMessage(msg);
       setSubmitting(false);
     }
   };
+
   return (
     <Formik
       initialValues={{ firstName: "", lastName: "", phone: "", email: "", message: "" }}
@@ -114,33 +108,27 @@ const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
             <Field type="text" name="firstName" placeholder="First Name" />
             <ErrorMessage name="firstName" component="div" className="error" />
           </div>
-
           <div className="form-group">
             <Field type="text" name="lastName" placeholder="Last Name" />
             <ErrorMessage name="lastName" component="div" className="error" />
           </div>
-
           <div className="form-group">
             <Field type="tel" name="phone" placeholder="Phone Number" />
             <ErrorMessage name="phone" component="div" className="error" />
           </div>
-
           <div className="form-group">
             <Field type="email" name="email" placeholder="Email" />
             <ErrorMessage name="email" component="div" className="error" />
           </div>
-
           <div className="form-group">
             <Field as="textarea" name="message" rows="3" placeholder="your message" />
             <ErrorMessage name="message" component="div" className="error" />
           </div>
-
           <div className="btn-wrap">
             <button type="submit" className="btn" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Consult Now"}
             </button>
           </div>
-
           {formMessage && (
             <div
               className="wpcf7-response-output"
@@ -159,5 +147,3 @@ const handleFormSubmit = async (values, { resetForm, setSubmitting }) => {
 };
 
 export default AppointmentForm;
-
-
