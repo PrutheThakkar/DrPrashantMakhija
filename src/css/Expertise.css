@@ -173,3 +173,8 @@
     display: block;
   }
 }/*# sourceMappingURL=Expertise.css.map */
+
+
+.expertise-list-section h3 br{
+display: none;
+}

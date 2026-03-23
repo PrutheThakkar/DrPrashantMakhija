@@ -9,7 +9,7 @@ const ExpertisePage = ({ data }) => {
 
   return (
     <Layout>
-    <InsidePage pageId={222} />
+      <InsidePage pageId={222} />
 
       <section className="expertise-list-section">
         <div className="container">
@@ -19,34 +19,36 @@ const ExpertisePage = ({ data }) => {
               id={node.slug}
               className={`expertise-row ${index % 2 !== 0 ? "reverse" : ""}`}
             >
-            <div className="left">
-              <div className="expertise-image">
-                {node.featuredImage?.node?.mediaItemUrl && (
-                  <img
-                    src={node.featuredImage.node.mediaItemUrl}
-                    alt={node.featuredImage.node.altText || node.title}
-                  />
-                )}
+              <div className="left">
+                <div className="expertise-image">
+                  {node.featuredImage?.node?.mediaItemUrl && (
+                    <img
+                      src={node.featuredImage.node.mediaItemUrl}
+                      alt={node.featuredImage.node.altText || node.title}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="right">
-              <div className="expertise-content">
-                <h3>{node.title}</h3>
-
-                {node.content && (
-                  <div
-                    className="expertise-text"
-                    dangerouslySetInnerHTML={{ __html: node.content }}
+              <div className="right">
+                <div className="expertise-content">
+                  {/* <h3>{node.title}</h3> */}
+                  <h3
+                    dangerouslySetInnerHTML={{ __html: node.title }}
                   />
-                )}
+                  {node.content && (
+                    <div
+                      className="expertise-text"
+                      dangerouslySetInnerHTML={{ __html: node.content }}
+                    />
+                  )}
 
-                {/* <Link to="/contact-us" className="expertise-btn btn-appt">
+                  {/* <Link to="/contact-us" className="expertise-btn btn-appt">
                   Know More
                 </Link>
                  */}
+                </div>
               </div>
-            </div>
             </div>
           ))}
         </div>
