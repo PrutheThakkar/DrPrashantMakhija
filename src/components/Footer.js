@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-col footer-brand">
           <div className="brand-logo">
             <div className="wrapper">
-              <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/logo-img.svg" alt="Logo" />
+              <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/04/logo-updated-footer.svg" alt="Logo" />
             </div>
           </div>
 
