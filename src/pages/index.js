@@ -4,6 +4,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import ClinicalFocusSlider from "../components/ClinicalFocusSlider"
 import AppointmentForm from "../components/AppointmentForm";
+import InkBlobBackground from "../components/InkBlobBackground"
+import watercolorBg from "../images/Hero-Image.jpg"
 
 const HomePage = ({ data }) => {
   const pageData = data?.allWpPage?.nodes[0]?.homePage
@@ -22,39 +24,38 @@ const HomePage = ({ data }) => {
     <Layout>
       <>
         <section className="hero-section">
-          <div className="container">
-            <div className="left">
-              <div className="brain-wrapper">
-                {heroBrainImage ? (
-                  <GatsbyImage
-                    image={heroBrainImage}
-                    alt={heroBrainImageAlt || "brain img"}
-                  />
-                ) : (
-                  <img
-                    src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
-                    alt="brain img"
-                  />
-                )}
+          <InkBlobBackground imageUrl={watercolorBg} className="hero-ink-bg">
+            <div className="container">
+              <div className="left">
+                <div className="brain-wrapper">
+                  {heroBrainImage ? (
+                    <GatsbyImage
+                      image={heroBrainImage}
+                      alt={heroBrainImageAlt || "brain img"}
+                      className="brain-main-image"
+                    />
+                  ) : (
+                    <img
+                      src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
+                      alt="brain img"
+                      className="brain-main-image"
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div className="right">
+                {heroTitle && <h1 dangerouslySetInnerHTML={{ __html: heroTitle }} />}
+                {heroSubtitle && <p dangerouslySetInnerHTML={{ __html: heroSubtitle }} />}
+
+                <div className="btn-wrap">
+                  <a href="#ContactForm" className="btn">
+                    Book An Appointment
+                  </a>
+                </div>
               </div>
             </div>
-
-            <div className="right">
-              {heroTitle && (
-                <h1 dangerouslySetInnerHTML={{ __html: heroTitle }} />
-              )}
-
-              {heroSubtitle && (
-                <p dangerouslySetInnerHTML={{ __html: heroSubtitle }} />
-              )}
-
-              <div className="btn-wrap">
-                <a href="#ContactForm" className="btn">
-                  Book An Appointment
-                </a>
-              </div>
-            </div>
-          </div>
+          </InkBlobBackground>
         </section>
 
         {/* <section id="about-section" className="about-section">
@@ -132,30 +133,30 @@ const HomePage = ({ data }) => {
 
         <section id="Guiding-Principles " className="Guiding-Principles about">
           {/* <div className="container"> */}
-            <div className="div-wrapper">
-              <div className="img-wrap">
+          <div className="div-wrapper">
+            <div className="img-wrap">
 
-                {aboutnextimage ? (
-                  <GatsbyImage
-                    image={aboutnextimage}
-                    alt={"brain img"}
-                  />
-                ) : (
-                  <img
-                    src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
-                    alt="brain img"
-                  />
-                )}
-              </div>
+              {aboutnextimage ? (
+                <GatsbyImage
+                  image={aboutnextimage}
+                  alt={"brain img"}
+                />
+              ) : (
+                <img
+                  src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
+                  alt="brain img"
+                />
+              )}
+            </div>
 
-              <div className="paragraph-wrappper">
+            <div className="paragraph-wrappper">
               <span dangerouslySetInnerHTML={{ __html: pageData.aboutDoctorPara }} />
 
               {/* <a href="#" className="btn-appt">
                 Know More
               </a> */}
-              </div>
             </div>
+          </div>
           {/* </div> */}
         </section>
 

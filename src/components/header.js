@@ -103,8 +103,8 @@ const Header = () => {
               <a href="/">Home</a>
             </li>
 
-            <li data-target="about-section" className="menu-item">
-              <a href="#about-section">About</a>
+            <li className="menu-item">
+              <a href="/about">About</a>
             </li>
 
              <li className="menu-item">
@@ -161,7 +161,7 @@ const Header = () => {
             data-target="Areas-of-Clinical-focus"
             className="mobile-menu-item"
           >
-            <a href="#Areas-of-Clinical-focus" onClick={closeMobile}>
+            <a href="/expertise" >
               Expertise
             </a>
           </li>

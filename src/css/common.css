@@ -1281,3 +1281,6 @@ html {
 footer a{
   color: #fff;
 }
+a{
+  cursor: pointer;
+}

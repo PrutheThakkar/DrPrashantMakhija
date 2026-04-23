@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0",
     "rimraf": "^5.0.10",
     "swiper": "^12.1.2",
+    "three": "^0.184.0",
     "yup": "^1.7.1"
   },
   "devDependencies": {

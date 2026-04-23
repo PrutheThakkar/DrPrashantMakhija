@@ -331,3 +331,161 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
   width: 24px;
   border-radius: 4px;
 }
+
+
+
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section .hero-ink-bg {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+      display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.hero-section .hero-ink-bg .ink-blob-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-section .hero-ink-bg .ink-blob-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.hero-section .hero-ink-bg .ink-blob-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  /* min-height: 780px;
+  width: 100%;
+  display: flex;
+  align-items: center; */
+}
+
+.hero-section .hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+
+
+.hero-section .brain-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+.hero-section .btn-wrap .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  height: 58px;
+  padding: 0 28px;
+  border: 2px solid #2b60c9;
+  border-radius: 999px;
+  color: #2b60c9;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.hero-section .btn-wrap .btn:hover {
+  background: #2b60c9;
+  color: #fff;
+}
+
+@media (max-width: 1400px) {
+  .hero-section .right h1 {
+    /* font-size: 60px; */
+  }
+
+  .hero-section .right p {
+    /* font-size: 20px; */
+  }
+
+  .hero-section .brain-main-image,
+  .hero-section .brain-main-image.gatsby-image-wrapper,
+  .hero-section .brain-wrapper img {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-section .hero-ink-bg {
+   height: 100%;
+   padding: 50px 0;
+  }
+
+  .hero-section .hero-ink-bg .ink-blob-content {
+    min-height: auto;
+  }
+
+  .hero-section .hero-inner {
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+
+  .hero-section .left,
+  .hero-section .right {
+    width: 100%;
+  }
+
+  .hero-section .right {
+    max-width: 100%;
+  }
+
+  .hero-section .brain-main-image,
+  .hero-section .brain-main-image.gatsby-image-wrapper,
+  .hero-section .brain-wrapper img {
+    max-width: 380px;
+  }
+
+  .hero-section .right h1 {
+    /* font-size: 42px; */
+  }
+
+  .hero-section .right p {
+    /* font-size: 18px; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-section .btn-wrap {
+    justify-content: center;
+  }
+
+  .hero-section .btn-wrap .btn {
+    min-width: 220px;
+    height: 52px;
+    /* font-size: 18px; */
+  }
+}

@@ -1,0 +1,82 @@
+.inner-top-section .top-section-image{
+ display: flex;
+ justify-content: center;
+ margin-bottom: 50px;
+}
+
+.patient-care-section {
+  /* padding: 90px 0; */
+  /* background: #f3f3f3; */
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 70px;
+
+    .subtitle {
+      display: block;
+      /* font-size: 24px; */
+      line-height: 1.4;
+      color: #2f67c8;
+      margin-bottom: 12px;
+    }
+
+   
+  }
+
+  .patient-care-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 80px;
+
+    .patient-care-image {
+      width: 34%;
+
+      .gatsby-image-wrapper {
+        width: 100%;
+      }
+    }
+
+    .patient-care-content {
+      width: 58%;
+
+     
+    }
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .patient-care-bottom-text {
+    /* border: 1px dashed #6ea4ff; */
+    padding: 16px 24px;
+    text-align: center;
+
+   
+  }
+}
+
+@media (max-width: 991px) {
+  .patient-care-section {
+    .section-heading {
+      h2 {
+        font-size: 36px;
+      }
+    }
+
+    .patient-care-row,
+    .patient-care-row.reverse {
+      flex-direction: column;
+      gap: 30px;
+
+      .patient-care-image,
+      .patient-care-content {
+        width: 100%;
+      }
+    }
+
+  
+  }
+}
