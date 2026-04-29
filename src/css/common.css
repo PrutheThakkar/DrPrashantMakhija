@@ -1284,3 +1284,32 @@ footer a{
 a{
   cursor: pointer;
 }
+
+.breadcrumb-wrap {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  z-index: 5;
+}
+
+.breadcrumb-wrap a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: #ffffff !important;
+  opacity: 0.8;
+}
+
+.breadcrumb-current {
+  color: #ffffff !important;
+  font-weight: 600;
+}

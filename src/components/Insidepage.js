@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Breadcrumb from "./Breadcrumb"
 
 const InsidePage = ({ pageId }) => {
-
   const [bgImage, setBgImage] = useState(
     "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-desk.jpg"
   )
@@ -12,9 +12,13 @@ const InsidePage = ({ pageId }) => {
 
     const updateBackground = () => {
       if (window.innerWidth <= 768) {
-        setBgImage("https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-mob.jpg")
+        setBgImage(
+          "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-mob.jpg"
+        )
       } else {
-        setBgImage("https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-desk.jpg")
+        setBgImage(
+          "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-desk.jpg"
+        )
       }
     }
 
@@ -50,7 +54,6 @@ const InsidePage = ({ pageId }) => {
 
   return (
     <>
-      {/* Banner Section */}
       <section
         className="inner-hero-sec"
         style={{
@@ -62,17 +65,20 @@ const InsidePage = ({ pageId }) => {
       >
         <div className="container">
           <div className="page-title">
+            {/* <Breadcrumb currentTitle={page?.pageTitle} /> */}
+
             <h1>{page?.pageTitle}</h1>
           </div>
         </div>
       </section>
 
-      {/* Top Content Section */}
       <section className="inner-top-section center-text">
         <div className="container">
-
           {page?.topSectionTitle && (
-            <h2><span className="subtitle">{page.topSectionSubtitle}</span>{page.topSectionTitle}</h2>
+            <h2>
+              <span className="subtitle">{page.topSectionSubtitle}</span>
+              {page.topSectionTitle}
+            </h2>
           )}
 
           {page?.topSectionPara && (

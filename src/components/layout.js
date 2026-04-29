@@ -5,6 +5,7 @@ import "../css/common.css"
 import "../css/home.css"
 import "../css/contact.css"
 import "../css/Expertise.css"
+import "../css/blog.css"
 import "../css/about.css"
 import "../css/ui-fixer.css"
 

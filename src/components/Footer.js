@@ -83,16 +83,19 @@ const Footer = () => {
         <div className="footer-col footer-nav">
           <ul>
             <li>
-              <a href="#about-section">About</a>
+              <a href="/about">About</a>
             </li>
             <li>
-              <a href="#Areas-of-Clinical-focus">Expertise</a>
+              <a href="/expertise">Expertise</a>
             </li>
             {/* <li>
               <a href="#">Insights</a>
             </li> */}
             <li>
-              <a href="#ContactForm">Contact</a>
+              <a href="/contact">Contact</a>
+            </li>
+            <li>
+              <a href="/faq">FAQ</a>
             </li>
           </ul>
 

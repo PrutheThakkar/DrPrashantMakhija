@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
+// import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
+import { homeAnimation } from "../js/homeanimation"
+
 import ClinicalFocusSlider from "../components/ClinicalFocusSlider"
 import AppointmentForm from "../components/AppointmentForm";
 import InkBlobBackground from "../components/InkBlobBackground"
@@ -20,6 +23,11 @@ const HomePage = ({ data }) => {
   const guidingPrincipleImage = getImage(pageData?.guidingPrincipleImage?.node)
 
   const clinicalEvaluationRightImage = getImage(pageData?.clinicalEvaluationRightImage?.node)
+
+  useEffect(() => {
+    homeAnimation()
+  }, [])
+
   return (
     <Layout>
       <>
@@ -46,6 +54,7 @@ const HomePage = ({ data }) => {
 
               <div className="right">
                 {heroTitle && <h1 dangerouslySetInnerHTML={{ __html: heroTitle }} />}
+
                 {heroSubtitle && <p dangerouslySetInnerHTML={{ __html: heroSubtitle }} />}
 
                 <div className="btn-wrap">
@@ -57,51 +66,6 @@ const HomePage = ({ data }) => {
             </div>
           </InkBlobBackground>
         </section>
-
-        {/* <section id="about-section" className="about-section">
-          <div className="container">
-            <h2>
-              <span>About Dr. Prashant Makhija</span>
-              Dedicated to Brain &amp; Nerve Health
-            </h2>
-
-            <div className="center-text">
-              <p>
-                Dr. Prashant Makhija is a Consultant Neurologist with advanced
-                <br />
-                training in clinical neurology and a focused interest in conditions
-                <br />
-                affecting the brain and nervous system.
-              </p>
-            </div>
-
-            <ul>
-              <li className="img-item">
-                <div className="img-wrap">
-                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Neuron.jpg" alt="Neuron cells" />
-                </div>
-              </li>
-
-              <li className="img-item">
-                <div className="img-wrap">
-                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.jpg" alt="Brain scan" />
-                </div>
-              </li>
-
-              <li className="img-item">
-                <div className="img-wrap">
-                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Diagnosis-1.jpg" alt="Diagnosis" />
-                </div>
-              </li>
-
-              <li className="img-item">
-                <div className="img-wrap">
-                  <img src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/MRI.jpg" alt="MRI scan" />
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section> */}
 
         <section id="about-section" className="about-section">
           <div className="container">
@@ -134,19 +98,17 @@ const HomePage = ({ data }) => {
         <section id="Guiding-Principles " className="Guiding-Principles about">
           {/* <div className="container"> */}
           <div className="div-wrapper">
-            <div className="img-wrap">
-
+            <div className="img-wrap guiding-image-reveal">
               {aboutnextimage ? (
-                <GatsbyImage
-                  image={aboutnextimage}
-                  alt={"brain img"}
-                />
+                <GatsbyImage image={aboutnextimage} alt={"brain img"} />
               ) : (
                 <img
                   src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                   alt="brain img"
                 />
               )}
+
+              <span className="blue-image-overlay"></span>
             </div>
 
             <div className="paragraph-wrappper">
@@ -162,8 +124,7 @@ const HomePage = ({ data }) => {
 
         <ClinicalFocusSlider pageData={pageData} />
 
-
-        <section className="Guiding-Principles">
+        <section className="Guiding-Principles guiding-new-section">
           <div className="container">
             <h2>
               <span>{pageData.guidingPrincipleSubtitle}</span>
@@ -171,19 +132,17 @@ const HomePage = ({ data }) => {
             </h2>
 
             <div className="div-wrapper">
-              <div className="img-wrap">
-
+              <div className="img-wrap guiding-principle-reveal">
                 {guidingPrincipleImage ? (
-                  <GatsbyImage
-                    image={guidingPrincipleImage}
-                    alt={"brain img"}
-                  />
+                  <GatsbyImage image={guidingPrincipleImage} alt={"brain img"} />
                 ) : (
                   <img
                     src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                     alt="brain img"
                   />
                 )}
+
+                <span className="blue-image-overlay"></span>
               </div>
 
               <span dangerouslySetInnerHTML={{ __html: pageData.guidingPrinciplePara }} />

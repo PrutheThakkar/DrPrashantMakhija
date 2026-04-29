@@ -64,6 +64,7 @@ const ClinicalFocusSlider = ({ pageData }) => {
               }}
               grabCursor={true}
               slidesPerView={4}
+              speed={1500}
               slidesPerGroup={4}
               spaceBetween={30}
               breakpoints={{

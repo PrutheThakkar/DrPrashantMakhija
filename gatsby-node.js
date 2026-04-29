@@ -1,26 +1,32 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
- */
+const path = require("path")
 
-exports.onCreateWebpackConfig = ({ stage, actions, loaders }) => {
-  if (stage === "build-html" || stage === "develop-html") {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /swiper/,
-            use: loaders.null(),
-          },
-        ],
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const result = await graphql(`
+    {
+      allWpPost {
+        nodes {
+          id
+          slug
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    throw result.errors
+  }
+
+  const blogDetailTemplate = path.resolve("./src/templates/blog-detail.js")
+
+  result.data.allWpPost.nodes.forEach(post => {
+    createPage({
+      path: `/blogs/${post.slug}`,
+      component: blogDetailTemplate,
+      context: {
+        id: post.id,
       },
     })
-  }
+  })
 }
-
-
-
-
-// drprashant - drprashantmakhija
-// Drprashant@1234

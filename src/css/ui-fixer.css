@@ -489,3 +489,141 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
     /* font-size: 18px; */
   }
 }
+
+/* faq */
+
+
+.faq-section {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.faq-wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid rgba(32, 63, 107, 0.15);
+  border-radius: 18px;
+  margin-bottom: 18px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.faq-question {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  text-align: left;
+  color: #203f6b;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.faq-icon {
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #203f6b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer > div {
+  padding: 0 26px 24px;
+  color: #444;
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 700px;
+}
+
+.faq-item.active {
+  border-color: rgba(32, 63, 107, 0.35);
+}
+
+.no-faq {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .faq-section {
+    padding: 50px 0;
+  }
+
+  .faq-question {
+    padding: 18px 20px;
+    font-size: 17px;
+  }
+
+  .faq-answer > div {
+    padding: 0 20px 20px;
+  }
+}
+
+
+.Guiding-Principles .guiding-image-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.Guiding-Principles .guiding-image-reveal img,
+.Guiding-Principles .guiding-image-reveal .gatsby-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.Guiding-Principles .blue-image-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #203f6b;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.guiding-new-section .guiding-principle-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.guiding-new-section .guiding-principle-reveal img,
+.guiding-new-section .guiding-principle-reveal .gatsby-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+  will-change: transform;
+}
+
+.guiding-new-section .blue-image-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #203f6b;
+  z-index: 5;
+  pointer-events: none;
+}

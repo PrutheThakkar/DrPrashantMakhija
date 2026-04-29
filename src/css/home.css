@@ -205,7 +205,7 @@
   width: 100%;
   height: auto;
 }
-
+/* 
 .about-section .container ul li .img-wrap {
   animation: floatImage 10s ease-in-out infinite;
   will-change: transform;
@@ -240,7 +240,7 @@
   80% {
     transform: translate3d(0, -30px, 0) rotate(0.15deg);
   }
-}
+} */
 @media (max-width: 1440px) {
   .about-section .container ul li .img-wrap {
     width: 350px;
