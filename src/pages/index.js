@@ -58,7 +58,7 @@ const HomePage = ({ data }) => {
                 {heroSubtitle && <p dangerouslySetInnerHTML={{ __html: heroSubtitle }} />}
 
                 <div className="btn-wrap">
-                  <a href="#ContactForm" className="btn">
+                  <a href="/contact" className="btn">
                     Book An Appointment
                   </a>
                 </div>

@@ -194,7 +194,7 @@ const Footer = () => {
               <br /> the Doctor?
             </h4>
             <div className="btn-wrap">
-              <a href="#" className="btn">
+              <a href="/contact" className="btn">
                 Consult Now
               </a>
             </div>
