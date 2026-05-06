@@ -13,14 +13,16 @@ const InsidePage = ({ pageId }) => {
     const updateBackground = () => {
       if (window.innerWidth <= 768) {
         setBgImage(
-          "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-mob.jpg"
+          "https://app.drprashantmakhija.com/wp-content/uploads/2026/05/DPM_InternalPageBanner_Mob.webp"
         )
       } else {
         setBgImage(
-          "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/indise-banner-desk.jpg"
+          "https://app.drprashantmakhija.com/wp-content/uploads/2026/05/DPM_InternalPageBanner_Desk.webp"
         )
       }
     }
+
+    
 
     updateBackground()
     window.addEventListener("resize", updateBackground)
