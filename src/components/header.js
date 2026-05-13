@@ -110,6 +110,10 @@ const Header = () => {
              <li className="menu-item">
               <a href="/expertise">Expertise</a>
             </li>
+            
+             <li className="menu-item">
+              <a href="/faq">FAQs</a>
+            </li>
 
              <li className="menu-item">
               <a href="/blogs">Insights</a>

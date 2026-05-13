@@ -81,7 +81,7 @@ const ExpertisePage = ({ data }) => {
             )
           })}
 
-          {pageData?.bottomParagraph && (
+          {/* {pageData?.bottomParagraph && (
             <div className="patient-care-bottom-text">
               <p
                 dangerouslySetInnerHTML={{
@@ -89,7 +89,7 @@ const ExpertisePage = ({ data }) => {
                 }}
               />
             </div>
-          )}
+          )} */}
         </div>
       </section>
     </Layout>
