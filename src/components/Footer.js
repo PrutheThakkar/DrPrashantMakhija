@@ -94,9 +94,7 @@ const Footer = () => {
             <li>
               <a href="/contact">Contact</a>
             </li>
-            <li>
-              <a href="/faq">FAQ</a>
-            </li>
+            {/* <li>  */}
           </ul>
 
           <div className="nav-divider"></div>

@@ -111,9 +111,9 @@ const Header = () => {
               <a href="/expertise">Expertise</a>
             </li>
             
-             <li className="menu-item">
+             {/* <li className="menu-item">
               <a href="/faq">FAQs</a>
-            </li>
+            </li> */}
 
              <li className="menu-item">
               <a href="/blogs">Insights</a>

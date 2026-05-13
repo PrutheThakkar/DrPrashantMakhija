@@ -1,18 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
-
 
 const placeholderImage =
   "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Hero-Image.jpg"
 
 const BlogPage = ({ data }) => {
-  const blogList = data?.allWpPost?.edges || []
+  const [activeIndex, setActiveIndex] = useState(null)
 
-  const stripHtml = html => {
-    if (!html) return ""
-    return html.replace(/<[^>]*>?/gm, "").slice(0, 140)
+  const blogList = data?.allWpPost?.edges || []
+  const faqList = data?.allWpFaq?.edges || []
+
+  const toggleFaq = index => {
+    setActiveIndex(activeIndex === index ? null : index)
   }
 
   return (
@@ -30,32 +31,80 @@ const BlogPage = ({ data }) => {
                 node?.featuredImage?.node?.altText || node?.title || "Blog image"
 
               return (
-              <div className="blog-card" key={node.slug}>
-  <Link to={`/blogs/${node.slug}`} className="blog-img-wrap">
-    <img src={blogImage} alt={blogAlt} />
-  </Link>
+                <div className="blog-card" key={node.slug}>
+                  <Link to={`/blogs/${node.slug}`} className="blog-img-wrap">
+                    <img src={blogImage} alt={blogAlt} />
+                  </Link>
 
-  <div className="blog-content">
-    <h3>
-      <Link to={`/blogs/${node.slug}`}>
-        {node.title}
-      </Link>
-    </h3>
+                  <div className="blog-content">
+                    <h3>
+                      <Link to={`/blogs/${node.slug}`}>
+                        {node.title}
+                      </Link>
+                    </h3>
 
-    <div className="btn-wrap">
-      <Link to={`/blogs/${node.slug}`} className="read-more-btn">
-        Read More
-      </Link>
-    </div>
-  </div>
-</div>
+                    <div className="btn-wrap">
+                      <Link to={`/blogs/${node.slug}`} className="read-more-btn">
+                        Read More
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               )
             })}
           </div>
         </div>
       </section>
 
+      {/* FAQ section at bottom of Blog page */}
+      <section className="faq-section blog-faq-section">
+        <div className="container">
+          <div className="section-title">
+            <h2>Frequently Asked Questions</h2>
+          </div>
 
+          <div className="faq-wrapper">
+            {faqList.length > 0 ? (
+              faqList.map(({ node }, index) => {
+                const isActive = activeIndex === index
+
+                return (
+                  <div
+                    className={`faq-item ${isActive ? "active" : ""}`}
+                    key={index}
+                  >
+                    <button
+                      type="button"
+                      className="faq-question"
+                      onClick={() => toggleFaq(index)}
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: node?.title,
+                        }}
+                      />
+
+                      <span className="faq-icon">
+                        {isActive ? "−" : "+"}
+                      </span>
+                    </button>
+
+                    <div className="faq-answer">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: node?.content,
+                        }}
+                      />
+                    </div>
+                  </div>
+                )
+              })
+            ) : (
+              <p className="no-faq">No FAQs found.</p>
+            )}
+          </div>
+        </div>
+      </section>
     </Layout>
   )
 }
@@ -77,6 +126,15 @@ export const query = graphql`
               mediaItemUrl
             }
           }
+        }
+      }
+    }
+
+    allWpFaq {
+      edges {
+        node {
+          title
+          content
         }
       }
     }
