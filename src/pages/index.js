@@ -44,7 +44,7 @@ const HomePage = ({ data }) => {
                     />
                   ) : (
                     <img
-                      src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
+                      src="https://app.drprashantmakhija.com/wp-content/uploads/2026/05/brain-new-img.png"
                       alt="brain img"
                       className="brain-main-image"
                     />
@@ -228,7 +228,7 @@ export const query = graphql`
         heroBrainImage {
           node {
             altText
-            gatsbyImage(height: 724, width: 605, placeholder: BLURRED, layout: CONSTRAINED)
+            gatsbyImage(height: 724, width: 792, placeholder: BLURRED, layout: CONSTRAINED)
           }
         }
         aboutTitle
