@@ -627,3 +627,20 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
   z-index: 5;
   pointer-events: none;
 }
+
+
+.guiding-new-sec .div-wrapper{
+display: flex;
+flex-direction: row;
+
+}
+.guiding-new-sec .div-wrapper .img-wrap.guiding-image-reveal{
+  width: 50%;
+}
+
+.Guiding-Principles.guiding-new-sec.about .div-wrapper .paragraph-wrappper{
+ position: relative;
+ width: 50%;
+ height: 100%;
+ background: #203F6B;
+}

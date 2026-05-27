@@ -95,8 +95,9 @@ const HomePage = ({ data }) => {
           </div>
         </section>
 
-        <section id="Guiding-Principles " className="Guiding-Principles about">
+        <section id="Guiding-Principles " className="Guiding-Principles guiding-new-sec about">
           {/* <div className="container"> */}
+          <div className="container">
           <div className="div-wrapper">
             <div className="img-wrap guiding-image-reveal">
               {aboutnextimage ? (
@@ -118,6 +119,7 @@ const HomePage = ({ data }) => {
                 Know More
               </a> */}
             </div>
+          </div>
           </div>
           {/* </div> */}
         </section>
@@ -245,7 +247,7 @@ export const query = graphql`
         aboutDoctorImage{
          node {
             altText
-            gatsbyImage(height: 800, width: 1920, placeholder: BLURRED, layout: CONSTRAINED)
+            gatsbyImage(height: 614, width: 1228, placeholder: BLURRED, layout: CONSTRAINED)
           }
         }
         aboutDoctorPara
