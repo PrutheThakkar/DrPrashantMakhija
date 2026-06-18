@@ -33,7 +33,12 @@ const BlogPage = ({ data }) => {
               return (
                 <div className="blog-card" data-aos="fade-up" key={node.slug}>
                   <Link to={`/blogs/${node.slug}`} className="blog-img-wrap">
-                    <img src={blogImage} alt={blogAlt} />
+                    <img
+                    src={blogImage}
+                    alt={blogAlt}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   </Link>
 
                   <div className="blog-content">

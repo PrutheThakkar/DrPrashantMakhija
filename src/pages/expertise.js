@@ -25,6 +25,8 @@ const ExpertisePage = ({ data }) => {
                     <img
                       src={node.featuredImage.node.mediaItemUrl}
                       alt={node.featuredImage.node.altText || node.title}
+                       loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>
