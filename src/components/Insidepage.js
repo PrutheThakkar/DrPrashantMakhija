@@ -64,12 +64,13 @@ const InsidePage = ({ pageId }) => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
+         data-aos="fade-in"
       >
         <div className="container">
           <div className="page-title">
             {/* <Breadcrumb currentTitle={page?.pageTitle} /> */}
 
-            <h1>{page?.pageTitle}</h1>
+            <h1 data-aos="fade-up">{page?.pageTitle}</h1>
           </div>
         </div>
       </section>
@@ -77,14 +78,14 @@ const InsidePage = ({ pageId }) => {
       <section className="inner-top-section center-text">
         <div className="container">
           {page?.topSectionTitle && (
-            <h2>
+            <h2 data-aos="fade-up" data-aos-delay="200">
               <span className="subtitle">{page.topSectionSubtitle}</span>
               {page.topSectionTitle}
             </h2>
           )}
 
           {page?.topSectionPara && (
-            <p dangerouslySetInnerHTML={{ __html: page.topSectionPara }} />
+            <p data-aos="fade-up" data-aos-delay="400" dangerouslySetInnerHTML={{ __html: page.topSectionPara }} />
           )}
         </div>
       </section>

@@ -159,7 +159,7 @@
 
 .about-section {
   position: relative;
-  padding-top: clamp(5rem, -5.7875rem + 12.6354vw, 9.375rem);
+ padding-top: clamp(3.375rem, -5.7875rem + 12.6354vw, 5rem);
 }
 .about-section .container ul {
   display: flex;
@@ -297,33 +297,39 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding-top: 270px;
+  /* padding-top: 270px; */
+  padding-top: 90px;
 }
 @media (max-width: 1800px) {
   .about-section .container .center-text {
-    padding-top: 350px;
+    /* padding-top: 350px; */
+    padding-top: 60px;
   }
 }
 @media (max-width: 1680px) {
   .about-section .container .center-text {
-    padding-top: 300px;
+    /* padding-top: 300px; */
+    padding-top: 50px;
   }
 }
 @media (max-width: 1440px) {
   .about-section .container .center-text {
-    padding-top: 228px;
+    /* padding-top: 228px; */
+    padding-top: 45px;
   }
 }
 @media (max-width: 1280px) {
   .about-section .container .center-text {
-    padding-top: 230px;
+    /* padding-top: 230px; */
+    padding-top: 40px;
   }
 }
 @media (max-width: 720px) {
   .about-section .container .center-text {
     position: relative;
     padding-top: 0;
-    margin-top: 70px;
+    /* margin-top: 70px; */
+    padding-top: 70px;
   }
 }
 .about-section .container .center-text p {
@@ -380,13 +386,13 @@
 }
 @media (max-width: 767px) {
   .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
-    width: 60px;
+    width: 30px;
     height: 5px;
   }
 }
 @media (max-width: 520px) {
   .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
-    width: 40px;
+    width: 20px;
     height: 5px;
   }
 }
@@ -513,8 +519,15 @@ margin-bottom: 0;
 }
 @media (max-width: 767px) {
   .clinical-evaluation .right .img-wrap {
-    width: 200px;
-    height: auto;
+    width: 100%;
+    height: 300px;
+  }
+  .clinical-evaluation .right .img-wrap .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+  .clinical-evaluation .right .img-wrap img {
+   height: 100%;
   }
 }
 .clinical-evaluation .right .img-wrap img {

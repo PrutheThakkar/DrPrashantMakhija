@@ -150,11 +150,11 @@ const Header = () => {
       <nav className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
         <ul className="mobile-menu-list">
           <li className="mobile-menu-item">
-            <a href="#" onClick={closeMobile}>Home</a>
+            <a href="/" onClick={closeMobile}>Home</a>
           </li>
 
           <li data-target="about-section" className="mobile-menu-item">
-            <a href="#about-section" onClick={closeMobile}>About</a>
+            <a href="/about" >About</a>
           </li>
 
           <li
@@ -167,11 +167,11 @@ const Header = () => {
           </li>
 
           <li className="mobile-menu-item">
-            <a href="#" onClick={closeMobile}>Insights</a>
+            <a href="/blogs" onClick={closeMobile}>Insights</a>
           </li>
 
           <li className="mobile-menu-item contact">
-            <a href="#" onClick={closeMobile}>Contact</a>
+            <a href="/contact" onClick={closeMobile}>Contact</a>
           </li>
         </ul>
       </nav>

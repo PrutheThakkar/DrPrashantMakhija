@@ -73,7 +73,7 @@ const AppointmentForm = () => {
       onSubmit={handleFormSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className="appointment-form">
+        <Form className="appointment-form"  data-aos="fade-up">
           <div className="form-group">
             <Field type="text" name="firstName" placeholder="First Name" />
             <ErrorMessage name="firstName" component="div" className="error" />

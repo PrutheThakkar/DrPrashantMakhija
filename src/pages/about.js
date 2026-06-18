@@ -14,10 +14,10 @@ const ExpertisePage = ({ data }) => {
     <Layout>
       <InsidePage pageId={262} />
 
-      <section className="inner-top-section center-text">
+      <section className="inner-top-section center-text" >
         <div className="container">
           {pageData?.aboutTopSectionTitle && (
-            <h2>
+            <h2 data-aos="fade-up" data-aos-delay="100">
               {pageData?.aboutTopSectionSubtitle && (
                 <span className="subtitle">
                   {pageData.aboutTopSectionSubtitle}
@@ -28,13 +28,13 @@ const ExpertisePage = ({ data }) => {
           )}
 
           {topImage && (
-            <div className="top-section-image">
+            <div className="top-section-image" data-aos="fade-up" data-aos-delay="250">
               <GatsbyImage image={topImage} alt={topImageAlt} />
             </div>
           )}
 
           {pageData?.aboutTopSectionPara && (
-            <p
+            <p data-aos="fade-up" data-aos-delay="300"
               dangerouslySetInnerHTML={{ __html: pageData.aboutTopSectionPara }}
             />
           )}
@@ -44,7 +44,7 @@ const ExpertisePage = ({ data }) => {
       <section className="patient-care-section">
         <div className="container">
           {(pageData?.approachSubtitle || pageData?.approachTitle) && (
-            <div className="section-heading center-text">
+            <div className="section-heading center-text" data-aos="fade-up">
               {pageData?.approachSubtitle && (
                 <span className="subtitle">{pageData.approachSubtitle}</span>
               )}
@@ -59,17 +59,18 @@ const ExpertisePage = ({ data }) => {
 
             return (
               <div
+              
                 key={index}
                 className={`patient-care-row ${index % 2 !== 0 ? "reverse" : ""}`}
               >
                 {approachImage && (
-                  <div className="patient-care-image">
+                  <div className="patient-care-image" data-aos="fade-right">
                     <GatsbyImage image={approachImage} alt={approachAlt} />
                   </div>
                 )}
 
                 {item?.approachSideParagraph && (
-                  <div className="patient-care-content">
+                  <div className="patient-care-content" data-aos="fade-left">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: item.approachSideParagraph,

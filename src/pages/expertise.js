@@ -19,7 +19,7 @@ const ExpertisePage = ({ data }) => {
               id={node.slug}
               className={`expertise-row ${index % 2 !== 0 ? "reverse" : ""}`}
             >
-              <div className="left">
+              <div className="left" data-aos="fade-right" >
                 <div className="expertise-image">
                   {node.featuredImage?.node?.mediaItemUrl && (
                     <img
@@ -30,7 +30,7 @@ const ExpertisePage = ({ data }) => {
                 </div>
               </div>
 
-              <div className="right">
+              <div className="right" data-aos="fade-left" >
                 <div className="expertise-content">
                   {/* <h3>{node.title}</h3> */}
                   <h3

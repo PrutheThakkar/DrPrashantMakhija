@@ -195,6 +195,12 @@
 .blog-list-section .container .blog-grid .blog-card{
     width: 30%;
 }
+@media (max-width:767px) {
+  
+  .blog-list-section .container .blog-grid .blog-card{
+      width: 100%;
+  }
+}
 
 /* =========================
    BLOG DETAIL PAGE

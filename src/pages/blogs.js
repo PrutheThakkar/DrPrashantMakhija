@@ -20,7 +20,7 @@ const BlogPage = ({ data }) => {
     <Layout>
       <InsidePage pageId={288} />
 
-      <section className="blog-list-section">
+      <section className="blog-list-section" >
         <div className="container">
           <div className="blog-grid">
             {blogList.map(({ node }) => {
@@ -31,7 +31,7 @@ const BlogPage = ({ data }) => {
                 node?.featuredImage?.node?.altText || node?.title || "Blog image"
 
               return (
-                <div className="blog-card" key={node.slug}>
+                <div className="blog-card" data-aos="fade-up" key={node.slug}>
                   <Link to={`/blogs/${node.slug}`} className="blog-img-wrap">
                     <img src={blogImage} alt={blogAlt} />
                   </Link>
@@ -60,7 +60,7 @@ const BlogPage = ({ data }) => {
       <section className="faq-section blog-faq-section">
         <div className="container">
           <div className="section-title">
-            <h2>Frequently Asked Questions</h2>
+            <h2 data-aos="fade-up">Frequently Asked Questions</h2>
           </div>
 
           <div className="faq-wrapper">
@@ -72,6 +72,8 @@ const BlogPage = ({ data }) => {
                   <div
                     className={`faq-item ${isActive ? "active" : ""}`}
                     key={index}
+                    data-aos="fade-up"
+                    data-aos-delay={index * 150}
                   >
                     <button
                       type="button"

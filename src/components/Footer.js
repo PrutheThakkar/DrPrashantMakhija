@@ -2,7 +2,7 @@ import React from "react"
 
 const Footer = () => {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer"  data-aos="fade-up">
       <div className="container">
         {/* Col 1: Brand + Contact */}
         <div className="footer-col footer-brand">

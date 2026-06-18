@@ -86,10 +86,27 @@ tl.fromTo(
   // ABOUT SECTION IMAGE ANIMATION
   // Images start from center and move to original position on scroll
 
-  const aboutSection = document.querySelector(".about-section")
-  const aboutImages = gsap.utils.toArray(".about-section .img-item")
+ const aboutSection = document.querySelector(".about-section")
+const aboutImages = gsap.utils.toArray(".about-section .img-item")
 
-  if (aboutSection && aboutImages.length > 0) {
+if (aboutSection && aboutImages.length > 0) {
+  const isMobile = window.innerWidth <= 720
+
+  if (isMobile) {
+    aboutImages.forEach((item, index) => {
+      gsap.set(item, {
+        clearProps: "all",
+      })
+
+      item.setAttribute("data-aos", "fade-up")
+      item.setAttribute("data-aos-delay", `${index * 150}`)
+      item.setAttribute("data-aos-duration", "900")
+    })
+
+    if (window.AOS) {
+      window.AOS.refreshHard()
+    }
+  } else {
     setTimeout(() => {
       const sectionRect = aboutSection.getBoundingClientRect()
 
@@ -132,7 +149,7 @@ tl.fromTo(
       ScrollTrigger.refresh()
     }, 600)
   }
-
+}
   // GUIDING PRINCIPLES IMAGE BLUE OVERLAY REVEAL
   // Blue overlay covers image first, then drops down/reveals image on scroll
 
@@ -179,81 +196,81 @@ tl.fromTo(
     })
   }
 // CLINICAL FOCUS SLIDER ANIMATION
-const clinicalSection = document.querySelector(".Areas-of-Clinical-Focus")
+// const clinicalSection = document.querySelector(".Areas-of-Clinical-Focus")
 
-if (clinicalSection) {
-  setTimeout(() => {
-    const clinicalCards = gsap.utils.toArray(
-      ".Areas-of-Clinical-Focus .clinical-card"
-    )
+// if (clinicalSection) {
+//   setTimeout(() => {
+//     const clinicalCards = gsap.utils.toArray(
+//       ".Areas-of-Clinical-Focus .clinical-card"
+//     )
 
-    if (clinicalCards.length === 0) return
+//     if (clinicalCards.length === 0) return
 
-    const clinicalTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".Areas-of-Clinical-Focus",
-        start: "top 80%",
-        // markers: true,
-        toggleActions: "play none none none",
-      },
-      defaults: {
-        ease: "power3.out",
-      },
-    })
+//     const clinicalTl = gsap.timeline({
+//       scrollTrigger: {
+//         trigger: ".Areas-of-Clinical-Focus",
+//         start: "top 80%",
+//         // markers: true,
+//         toggleActions: "play none none none",
+//       },
+//       defaults: {
+//         ease: "power3.out",
+//       },
+//     })
 
-    clinicalTl
-      .fromTo(
-        ".Areas-of-Clinical-Focus h2 span",
-        { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5 }
-      )
-      .fromTo(
-        ".Areas-of-Clinical-Focus h2",
-        { y: 45, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7 },
-        "-=0.2"
-      )
-      .fromTo(
-        ".Areas-of-Clinical-Focus .top-text",
-        { y: 35, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.25"
-      )
-      .fromTo(
-        clinicalCards,
-        {
-          y: 80,
-          opacity: 0,
-          scale: 0.92,
-          filter: "blur(8px)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          filter: "blur(0px)",
-          duration: 0.9,
-          stagger: 0.12,
-          ease: "power4.out",
-        },
-        "-=0.1"
-      )
-      .fromTo(
-        ".clinical-prev, .clinical-next",
-        { scale: 0, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.45,
-          stagger: 0.08,
-          ease: "back.out(1.8)",
-        },
-        "-=0.5"
-      )
+//     clinicalTl
+//       .fromTo(
+//         ".Areas-of-Clinical-Focus h2 span",
+//         { y: 25, opacity: 0 },
+//         { y: 0, opacity: 1, duration: 0.5 }
+//       )
+//       .fromTo(
+//         ".Areas-of-Clinical-Focus h2",
+//         { y: 45, opacity: 0 },
+//         { y: 0, opacity: 1, duration: 0.7 },
+//         "-=0.2"
+//       )
+//       .fromTo(
+//         ".Areas-of-Clinical-Focus .top-text",
+//         { y: 35, opacity: 0 },
+//         { y: 0, opacity: 1, duration: 0.6 },
+//         "-=0.25"
+//       )
+//       .fromTo(
+//         clinicalCards,
+//         {
+//           y: 80,
+//           opacity: 0,
+//           scale: 0.92,
+//           filter: "blur(8px)",
+//         },
+//         {
+//           y: 0,
+//           opacity: 1,
+//           scale: 1,
+//           filter: "blur(0px)",
+//           duration: 0.9,
+//           stagger: 0.12,
+//           ease: "power4.out",
+//         },
+//         "-=0.1"
+//       )
+//       .fromTo(
+//         ".clinical-prev, .clinical-next",
+//         { scale: 0, opacity: 0 },
+//         {
+//           scale: 1,
+//           opacity: 1,
+//           duration: 0.45,
+//           stagger: 0.08,
+//           ease: "back.out(1.8)",
+//         },
+//         "-=0.5"
+//       )
 
-    ScrollTrigger.refresh()
-  }, 1000)
-}
+//     ScrollTrigger.refresh()
+//   }, 1000)
+// }
 
 
 // GUIDING NEW SECTION IMAGE REVEAL
@@ -316,73 +333,73 @@ if (guidingNewSection) {
 }
 
 // CLINICAL EVALUATION SECTION ANIMATION
-const clinicalEvaluationSection = document.querySelector(".clinical-evaluation")
+// const clinicalEvaluationSection = document.querySelector(".clinical-evaluation")
 
-if (clinicalEvaluationSection) {
-  const clinicalEvalTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".clinical-evaluation",
-      start: "top 65%",
-      markers: false,
-      toggleActions: "play none none none",
-    },
-    defaults: {
-      ease: "power3.out",
-    },
-  })
+// if (clinicalEvaluationSection) {
+//   const clinicalEvalTl = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".clinical-evaluation",
+//       start: "top 65%",
+//       markers: false,
+//       toggleActions: "play none none none",
+//     },
+//     defaults: {
+//       ease: "power3.out",
+//     },
+//   })
 
-  clinicalEvalTl
-    .fromTo(
-      ".clinical-evaluation h2 span",
-      { y: 25, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5 }
-    )
-    .fromTo(
-      ".clinical-evaluation h2",
-      { y: 45, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7 },
-      "-=0.25"
-    )
-    .fromTo(
-      ".clinical-evaluation .top-para",
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6 },
-      "-=0.25"
-    )
-    .fromTo(
-      ".clinical-evaluation .left li",
-      {
-        x: -70,
-        opacity: 0,
-        filter: "blur(8px)",
-      },
-      {
-        x: 0,
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.75,
-        stagger: 0.16,
-      },
-      "-=0.1"
-    )
-    .fromTo(
-      ".clinical-evaluation .right .img-wrap",
-      {
+//   clinicalEvalTl
+//     .fromTo(
+//       ".clinical-evaluation h2 span",
+//       { y: 25, opacity: 0 },
+//       { y: 0, opacity: 1, duration: 0.5 }
+//     )
+//     .fromTo(
+//       ".clinical-evaluation h2",
+//       { y: 45, opacity: 0 },
+//       { y: 0, opacity: 1, duration: 0.7 },
+//       "-=0.25"
+//     )
+//     .fromTo(
+//       ".clinical-evaluation .top-para",
+//       { y: 30, opacity: 0 },
+//       { y: 0, opacity: 1, duration: 0.6 },
+//       "-=0.25"
+//     )
+//     .fromTo(
+//       ".clinical-evaluation .left li",
+//       {
+//         x: -70,
+//         opacity: 0,
+//         filter: "blur(8px)",
+//       },
+//       {
+//         x: 0,
+//         opacity: 1,
+//         filter: "blur(0px)",
+//         duration: 0.75,
+//         stagger: 0.16,
+//       },
+//       "-=0.1"
+//     )
+//     .fromTo(
+//       ".clinical-evaluation .right .img-wrap",
+//       {
        
-        opacity: 0,
-        scale: 0.9,
-        filter: "blur(10px)",
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
-        duration: 1.1,
-        ease: "power4.out",
-      },
-      "-=0.75"
-    )
-}
+//         opacity: 0,
+//         scale: 0.9,
+//         filter: "blur(10px)",
+//       },
+//       {
+//         opacity: 1,
+//         scale: 1,
+//         filter: "blur(0px)",
+//         duration: 1.1,
+//         ease: "power4.out",
+//       },
+//       "-=0.75"
+//     )
+// }
 
 
 // FOOTER FADE IN ANIMATION
