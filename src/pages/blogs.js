@@ -68,7 +68,7 @@ const BlogPage = ({ data }) => {
             <h2 data-aos="fade-up">Frequently Asked Questions</h2>
           </div>
 
-          <div className="faq-wrapper">
+          <div className="faq-wrapper" data-aos="fade-up" >
             {faqList.length > 0 ? (
               faqList.map(({ node }, index) => {
                 const isActive = activeIndex === index
@@ -77,13 +77,14 @@ const BlogPage = ({ data }) => {
                   <div
                     className={`faq-item ${isActive ? "active" : ""}`}
                     key={index}
-                    data-aos="fade-up"
+                   
                     data-aos-delay={index * 150}
                   >
                     <button
                       type="button"
                       className="faq-question"
                       onClick={() => toggleFaq(index)}
+                      data-aos="fade-up"
                     >
                       <span
                         dangerouslySetInnerHTML={{

@@ -4,12 +4,12 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { homeAnimation } from "../js/homeanimation"
-import Lenis from "lenis"
-import AOS from "aos"
-import "aos/dist/aos.css"
+// import Lenis from "lenis"
+// import AOS from "aos"
+// import "aos/dist/aos.css"
 
 import ClinicalFocusSlider from "../components/ClinicalFocusSlider"
-import AppointmentForm from "../components/AppointmentForm";
+// import AppointmentForm from "../components/AppointmentForm";
 import InkBlobBackground from "../components/InkBlobBackground"
 import watercolorBg from "../images/Hero-Image.jpg"
 
@@ -25,64 +25,74 @@ const HomePage = ({ data }) => {
   const heroBrainImage = getImage(pageData?.heroBrainImage?.node)
   const heroBrainImageAlt = pageData?.heroBrainImage?.node?.altText
 
-  const aboutImageList = pageData?.aboutImages.aboutImageList || []
+  // const aboutImageList = pageData?.aboutImages.aboutImageList || []
   const aboutnextimage = getImage(pageData?.aboutDoctorImage?.node)
   const guidingPrincipleImage = getImage(pageData?.guidingPrincipleImage?.node)
 
   const clinicalEvaluationRightImage = getImage(pageData?.clinicalEvaluationRightImage?.node)
 
   useEffect(() => {
-    const hidePreloader = () => {
-      setTimeout(() => {
-        setIsPageLoaded(true)
-      }, 1000)
-    }
+  if (typeof window === "undefined") return
 
-    if (typeof window !== "undefined") {
-      if (document.readyState === "complete") {
-        hidePreloader()
-      } else {
-        window.addEventListener("load", hidePreloader)
-      }
-    }
+  const timer = setTimeout(() => {
+    setIsPageLoaded(true)
+  }, 350)
 
-    const fallbackTimer = setTimeout(() => {
-      setIsPageLoaded(true)
-    }, 5000)
+  return () => clearTimeout(timer)
+}, [])
 
-    return () => {
-      window.removeEventListener("load", hidePreloader)
-      clearTimeout(fallbackTimer)
-    }
-  }, [])
+  // useEffect(() => {
+  //   const hidePreloader = () => {
+  //     setTimeout(() => {
+  //       setIsPageLoaded(true)
+  //     }, 1000)
+  //   }
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-    })
+  //   if (typeof window !== "undefined") {
+  //     if (document.readyState === "complete") {
+  //       hidePreloader()
+  //     } else {
+  //       window.addEventListener("load", hidePreloader)
+  //     }
+  //   }
 
-    let rafId
+  //   const fallbackTimer = setTimeout(() => {
+  //     setIsPageLoaded(true)
+  //   }, 5000)
 
-    function raf(time) {
-      lenis.raf(time)
-      rafId = requestAnimationFrame(raf)
-    }
+  //   return () => {
+  //     window.removeEventListener("load", hidePreloader)
+  //     clearTimeout(fallbackTimer)
+  //   }
+  // }, [])
 
-    rafId = requestAnimationFrame(raf)
+  // useEffect(() => {
+  //   const lenis = new Lenis({
+  //     duration: 1.2,
+  //     smoothWheel: true,
+  //   })
 
-    AOS.init({
-      duration: 900,
-      easing: "ease-out",
-      once: true,
-      offset: 120,
-    })
+  //   let rafId
 
-    return () => {
-      cancelAnimationFrame(rafId)
-      lenis.destroy()
-    }
-  }, [])
+  //   function raf(time) {
+  //     lenis.raf(time)
+  //     rafId = requestAnimationFrame(raf)
+  //   }
+
+  //   rafId = requestAnimationFrame(raf)
+
+  //   AOS.init({
+  //     duration: 900,
+  //     easing: "ease-out",
+  //     once: true,
+  //     offset: 120,
+  //   })
+
+  //   return () => {
+  //     cancelAnimationFrame(rafId)
+  //     lenis.destroy()
+  //   }
+  // }, [])
 
   useEffect(() => {
     if (isPageLoaded) {
