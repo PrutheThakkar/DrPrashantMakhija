@@ -121,7 +121,7 @@ const HomePage = ({ data }) => {
 
         <div className={`page-content ${isPageLoaded ? "page-loaded" : ""}`}>
           <section className="hero-section" data-aos="fade-in">
-            <InkBlobBackground imageUrl={watercolorBg} className="hero-ink-bg">
+            {/* <InkBlobBackground imageUrl={watercolorBg} className="hero-ink-bg"> */}
               <div className="container">
                 <div className="left">
                   <div className="brain-wrapper">
@@ -155,7 +155,7 @@ const HomePage = ({ data }) => {
                   </div>
                 </div>
               </div>
-            </InkBlobBackground>
+            {/* </InkBlobBackground> */}
           </section>
 
           <section id="Guiding-Principles " className="Guiding-Principles guiding-new-sec about">
