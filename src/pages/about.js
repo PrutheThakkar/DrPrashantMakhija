@@ -29,7 +29,12 @@ const ExpertisePage = ({ data }) => {
 
           {topImage && (
             <div className="top-section-image" data-aos="fade-up" data-aos-delay="250">
-              <GatsbyImage image={topImage} alt={topImageAlt} />
+              <GatsbyImage
+                image={topImage}
+                alt={topImageAlt}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           )}
 
@@ -59,13 +64,18 @@ const ExpertisePage = ({ data }) => {
 
             return (
               <div
-              
+
                 key={index}
                 className={`patient-care-row ${index % 2 !== 0 ? "reverse" : ""}`}
               >
                 {approachImage && (
                   <div className="patient-care-image" data-aos="fade-right">
-                    <GatsbyImage image={approachImage} alt={approachAlt} />
+                    <GatsbyImage
+                      image={approachImage}
+                      alt={approachAlt}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 )}
 
@@ -112,10 +122,11 @@ export const query = graphql`
             node {
               altText
               gatsbyImage(
-                width: 1200
+                width: 1000
                 quality: 90
                 placeholder: BLURRED
                 layout: CONSTRAINED
+                formats: [AUTO, WEBP, AVIF]
               )
             }
           }
@@ -132,6 +143,7 @@ export const query = graphql`
                   quality: 90
                   layout: CONSTRAINED
                   placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
                 )
               }
             }

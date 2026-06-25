@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
 
@@ -20,31 +21,50 @@ const BlogPage = ({ data }) => {
     <Layout>
       <InsidePage pageId={288} />
 
-      <section className="blog-list-section" >
+      <section className="blog-list-section">
         <div className="container">
           <div className="blog-grid">
             {blogList.map(({ node }) => {
-              const blogImage =
+              const blogImage = getImage(
+                node?.featuredImage?.node?.gatsbyImage
+              )
+
+              const blogFallbackImage =
                 node?.featuredImage?.node?.mediaItemUrl || placeholderImage
 
               const blogAlt =
-                node?.featuredImage?.node?.altText || node?.title || "Blog image"
+                node?.featuredImage?.node?.altText ||
+                node?.title ||
+                "Blog image"
 
               return (
                 <div className="blog-card" data-aos="fade-up" key={node.slug}>
                   <Link to={`/blogs/${node.slug}`} className="blog-img-wrap">
-                    <img
-                    src={blogImage}
-                    alt={blogAlt}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                    {blogImage ? (
+                      <GatsbyImage
+                        image={blogImage}
+                        alt={blogAlt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <img
+                        src={blogFallbackImage}
+                        alt={blogAlt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                   </Link>
 
                   <div className="blog-content">
                     <h3>
                       <Link to={`/blogs/${node.slug}`}>
-                        {node.title}
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: node.title,
+                          }}
+                        />
                       </Link>
                     </h3>
 
@@ -61,14 +81,13 @@ const BlogPage = ({ data }) => {
         </div>
       </section>
 
-      {/* FAQ section at bottom of Blog page */}
       <section className="faq-section blog-faq-section">
         <div className="container">
           <div className="section-title">
             <h2 data-aos="fade-up">Frequently Asked Questions</h2>
           </div>
 
-          <div className="faq-wrapper" data-aos="fade-up" >
+          <div className="faq-wrapper" data-aos="fade-up">
             {faqList.length > 0 ? (
               faqList.map(({ node }, index) => {
                 const isActive = activeIndex === index
@@ -77,14 +96,12 @@ const BlogPage = ({ data }) => {
                   <div
                     className={`faq-item ${isActive ? "active" : ""}`}
                     key={index}
-                   
                     data-aos-delay={index * 150}
                   >
                     <button
                       type="button"
                       className="faq-question"
                       onClick={() => toggleFaq(index)}
-                      data-aos="fade-up"
                     >
                       <span
                         dangerouslySetInnerHTML={{
@@ -125,13 +142,20 @@ export const query = graphql`
       edges {
         node {
           title
-          content
           slug
           uri
           featuredImage {
             node {
               altText
               mediaItemUrl
+              gatsbyImage(
+                width: 520
+                height: 340
+                quality: 72
+                layout: CONSTRAINED
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

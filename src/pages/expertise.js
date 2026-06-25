@@ -1,11 +1,12 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
 
 const ExpertisePage = ({ data }) => {
-  const pageData = data?.allWpPage?.nodes?.[0]?.expertisePage
-  const expertiseList = data?.allWpExpertise?.edges?.slice().reverse() || []
+  const expertiseList =
+    data?.allWpExpertise?.edges?.slice().reverse() || []
 
   return (
     <Layout>
@@ -13,49 +14,75 @@ const ExpertisePage = ({ data }) => {
 
       <section className="expertise-list-section">
         <div className="container">
-          {expertiseList.map(({ node }, index) => (
-            <div
-              key={node.slug || index}
-              id={node.slug}
-              className={`expertise-row ${index % 2 !== 0 ? "reverse" : ""}`}
-            >
-              <div className="left" data-aos="fade-right" >
-                <div className="expertise-image">
-                  {node.featuredImage?.node?.mediaItemUrl && (
-                    <img
-                      src={node.featuredImage.node.mediaItemUrl}
-                      alt={node.featuredImage.node.altText || node.title}
-                       loading="lazy"
-                      decoding="async"
+          {expertiseList.map(({ node }, index) => {
+            const imageData = getImage(
+              node?.featuredImage?.node?.gatsbyImage
+            )
+
+            const fallbackImage =
+              node?.featuredImage?.node?.mediaItemUrl
+
+            return (
+              <div
+                key={node.slug || index}
+                id={node.slug}
+                className={`expertise-row ${
+                  index % 2 !== 0 ? "reverse" : ""
+                }`}
+              >
+                <div className="left" data-aos="fade-right">
+                  <div className="expertise-image">
+
+                    {/* ✅ Optimized Gatsby Image */}
+                    {imageData ? (
+                      <GatsbyImage
+                        image={imageData}
+                        alt={
+                          node.featuredImage?.node?.altText ||
+                          node.title ||
+                          "Expertise image"
+                        }
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      /* fallback only if needed */
+                      fallbackImage && (
+                        <img
+                          src={fallbackImage}
+                          alt={node.title || "Expertise image"}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )
+                    )}
+
+                  </div>
+                </div>
+
+                <div className="right" data-aos="fade-left">
+                  <div className="expertise-content">
+                    <h3
+                      dangerouslySetInnerHTML={{
+                        __html: node.title,
+                      }}
                     />
-                  )}
+
+                    {node.content && (
+                      <div
+                        className="expertise-text"
+                        dangerouslySetInnerHTML={{
+                          __html: node.content,
+                        }}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
-
-              <div className="right" data-aos="fade-left" >
-                <div className="expertise-content">
-                  {/* <h3>{node.title}</h3> */}
-                  <h3
-                    dangerouslySetInnerHTML={{ __html: node.title }}
-                  />
-                  {node.content && (
-                    <div
-                      className="expertise-text"
-                      dangerouslySetInnerHTML={{ __html: node.content }}
-                    />
-                  )}
-
-                  {/* <Link to="/contact-us" className="expertise-btn btn-appt">
-                  Know More
-                </Link>
-                 */}
-                </div>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
-
     </Layout>
   )
 }

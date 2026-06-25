@@ -128,9 +128,11 @@ const HomePage = ({ data }) => {
                     {heroBrainImage ? (
                       <GatsbyImage
                         image={heroBrainImage}
-                        alt={heroBrainImageAlt || "brain img"}
+                        alt={heroBrainImageAlt || "Brain image"}
                         className="brain-main-image"
                         loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
                       />
                     ) : (
                       <img
