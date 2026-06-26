@@ -4,9 +4,9 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { homeAnimation } from "../js/homeanimation"
-// import Lenis from "lenis"
-// import AOS from "aos"
-// import "aos/dist/aos.css"
+import Lenis from "lenis"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 import ClinicalFocusSlider from "../components/ClinicalFocusSlider"
 // import AppointmentForm from "../components/AppointmentForm";
@@ -41,58 +41,58 @@ const HomePage = ({ data }) => {
     return () => clearTimeout(timer)
   }, [])
 
-  // useEffect(() => {
-  //   const hidePreloader = () => {
-  //     setTimeout(() => {
-  //       setIsPageLoaded(true)
-  //     }, 1000)
-  //   }
+  useEffect(() => {
+    const hidePreloader = () => {
+      setTimeout(() => {
+        setIsPageLoaded(true)
+      }, 1000)
+    }
 
-  //   if (typeof window !== "undefined") {
-  //     if (document.readyState === "complete") {
-  //       hidePreloader()
-  //     } else {
-  //       window.addEventListener("load", hidePreloader)
-  //     }
-  //   }
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        hidePreloader()
+      } else {
+        window.addEventListener("load", hidePreloader)
+      }
+    }
 
-  //   const fallbackTimer = setTimeout(() => {
-  //     setIsPageLoaded(true)
-  //   }, 5000)
+    const fallbackTimer = setTimeout(() => {
+      setIsPageLoaded(true)
+    }, 5000)
 
-  //   return () => {
-  //     window.removeEventListener("load", hidePreloader)
-  //     clearTimeout(fallbackTimer)
-  //   }
-  // }, [])
+    return () => {
+      window.removeEventListener("load", hidePreloader)
+      clearTimeout(fallbackTimer)
+    }
+  }, [])
 
-  // useEffect(() => {
-  //   const lenis = new Lenis({
-  //     duration: 1.2,
-  //     smoothWheel: true,
-  //   })
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+    })
 
-  //   let rafId
+    let rafId
 
-  //   function raf(time) {
-  //     lenis.raf(time)
-  //     rafId = requestAnimationFrame(raf)
-  //   }
+    function raf(time) {
+      lenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
 
-  //   rafId = requestAnimationFrame(raf)
+    rafId = requestAnimationFrame(raf)
 
-  //   AOS.init({
-  //     duration: 900,
-  //     easing: "ease-out",
-  //     once: true,
-  //     offset: 120,
-  //   })
+    AOS.init({
+      duration: 900,
+      easing: "ease-out",
+      once: true,
+      offset: 120,
+    })
 
-  //   return () => {
-  //     cancelAnimationFrame(rafId)
-  //     lenis.destroy()
-  //   }
-  // }, [])
+    return () => {
+      cancelAnimationFrame(rafId)
+      lenis.destroy()
+    }
+  }, [])
 
   useEffect(() => {
     if (isPageLoaded) {
@@ -121,7 +121,7 @@ const HomePage = ({ data }) => {
 
         <div className={`page-content ${isPageLoaded ? "page-loaded" : ""}`}>
           <section className="hero-section" data-aos="fade-in">
-            {/* <InkBlobBackground imageUrl={watercolorBg} className="hero-ink-bg"> */}
+            <InkBlobBackground imageUrl={watercolorBg} className="hero-ink-bg">
             <div className="container">
               <div className="left">
                 <div className="brain-wrapper">
@@ -157,7 +157,7 @@ const HomePage = ({ data }) => {
                 </div>
               </div>
             </div>
-            {/* </InkBlobBackground> */}
+            </InkBlobBackground>
           </section>
 
           <section id="Guiding-Principles " className="Guiding-Principles guiding-new-sec about">
