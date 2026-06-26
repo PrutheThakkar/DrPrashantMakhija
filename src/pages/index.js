@@ -317,7 +317,7 @@ const HomePage = ({ data }) => {
                       />
                     ) : (
                       <img
-                        src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
+                        src="https://app.drprashantmakhija.com/wp-content/uploads/2026/06/freepeek-new-img.webp"
                         alt="brain img"
                         loading="lazy"
                       />
