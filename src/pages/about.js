@@ -85,7 +85,7 @@ const AboutPage = ({ data }) => {
                 delay: 2000,
                 disableOnInteraction: false,
               }}
-              spaceBetween={60}   
+              // spaceBetween={60}   
             >
               {swiperList.map((item, index) => {
                 const logo = item?.logo?.node?.mediaItemUrl
@@ -195,7 +195,7 @@ export const query = graphql`
               gatsbyImage(
                 width: 609
                 height: 342
-                quality: 90
+                quality: 100
                 placeholder: BLURRED
                 layout: CONSTRAINED
                 formats: [AUTO, WEBP, AVIF]
@@ -214,7 +214,7 @@ export const query = graphql`
                 gatsbyImage(
                   width: 660
                   height: 517
-                  quality: 90
+                  quality: 100
                   layout: CONSTRAINED
                   placeholder: BLURRED
                   formats: [AUTO, WEBP, AVIF]

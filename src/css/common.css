@@ -1185,10 +1185,14 @@ header .wrapper ul li.contact a {
 .cta-content h4 {
   font-size: clamp(1.375rem, -0.1661rem + 1.8051vw, 2rem);
 }
+
 @media (max-width: 987px) {
   .cta-content h4 br {
     display: none;
   }
+}
+.cta-content h4 br{
+display: none;
 }
 
 .cta-heading {

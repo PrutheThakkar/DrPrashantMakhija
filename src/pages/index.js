@@ -32,14 +32,14 @@ const HomePage = ({ data }) => {
   const clinicalEvaluationRightImage = getImage(pageData?.clinicalEvaluationRightImage?.node)
 
   useEffect(() => {
-  if (typeof window === "undefined") return
+    if (typeof window === "undefined") return
 
-  const timer = setTimeout(() => {
-    setIsPageLoaded(true)
-  }, 350)
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true)
+    }, 350)
 
-  return () => clearTimeout(timer)
-}, [])
+    return () => clearTimeout(timer)
+  }, [])
 
   // useEffect(() => {
   //   const hidePreloader = () => {
@@ -122,41 +122,41 @@ const HomePage = ({ data }) => {
         <div className={`page-content ${isPageLoaded ? "page-loaded" : ""}`}>
           <section className="hero-section" data-aos="fade-in">
             {/* <InkBlobBackground imageUrl={watercolorBg} className="hero-ink-bg"> */}
-              <div className="container">
-                <div className="left">
-                  <div className="brain-wrapper">
-                    {heroBrainImage ? (
-                      <GatsbyImage
-                        image={heroBrainImage}
-                        alt={heroBrainImageAlt || "Brain image"}
-                        className="brain-main-image"
-                        loading="eager"
-                        decoding="async"
-                        fetchPriority="high"
-                      />
-                    ) : (
-                      <img
-                        src="https://app.drprashantmakhija.com/wp-content/uploads/2026/05/brain-new-img.png"
-                        alt="brain img"
-                        className="brain-main-image"
-                        loading="eager"
-                      />
-                    )}
-                  </div>
-                </div>
-
-                <div className="right">
-                  {heroTitle && <h1 dangerouslySetInnerHTML={{ __html: heroTitle }} />}
-
-                  {heroSubtitle && <p dangerouslySetInnerHTML={{ __html: heroSubtitle }} />}
-
-                  <div className="btn-wrap">
-                    <a href="/contact" className="btn">
-                      Book An Appointment
-                    </a>
-                  </div>
+            <div className="container">
+              <div className="left">
+                <div className="brain-wrapper">
+                  {heroBrainImage ? (
+                    <GatsbyImage
+                      image={heroBrainImage}
+                      alt={heroBrainImageAlt || "Brain image"}
+                      className="brain-main-image"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                    />
+                  ) : (
+                    <img
+                      src="https://app.drprashantmakhija.com/wp-content/uploads/2026/05/brain-new-img.png"
+                      alt="brain img"
+                      className="brain-main-image"
+                      loading="eager"
+                    />
+                  )}
                 </div>
               </div>
+
+              <div className="right">
+                {heroTitle && <h1 dangerouslySetInnerHTML={{ __html: heroTitle }} />}
+
+                {heroSubtitle && <p dangerouslySetInnerHTML={{ __html: heroSubtitle }} />}
+
+                <div className="btn-wrap">
+                  <a href="/contact" className="btn">
+                    Book An Appointment
+                  </a>
+                </div>
+              </div>
+            </div>
             {/* </InkBlobBackground> */}
           </section>
 
@@ -181,7 +181,7 @@ const HomePage = ({ data }) => {
                       src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                       alt="brain img"
                       loading="lazy"
-                       className="border-img"
+                      className="border-img"
                     />
                   )}
 
@@ -247,7 +247,7 @@ const HomePage = ({ data }) => {
                       image={guidingPrincipleImage}
                       alt={"brain img"}
                       loading="lazy"
-                       className="border-img"
+                      className="border-img"
                     />
                   ) : (
                     <img

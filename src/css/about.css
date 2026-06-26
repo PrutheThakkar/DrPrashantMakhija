@@ -115,7 +115,7 @@
 
 
 .logo-slider-section {
-  padding: 60px 0;
+  /* padding: 60px 0; */
   overflow: hidden; /* ✅ important */
 }
 @media (max-width:767px) {
