@@ -606,7 +606,7 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
 
 .guiding-new-section .guiding-principle-reveal {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .guiding-new-section .guiding-principle-reveal img,
@@ -651,12 +651,14 @@ flex-direction: row;
 
 .Guiding-Principles.guiding-new-sec.about .div-wrapper .img-wrap.guiding-image-reveal{
 width: 40%;
+overflow: visible;
 }
 
 .Guiding-Principles.guiding-new-sec.about .div-wrapper .img-wrap.guiding-image-reveal{
 margin-bottom: 0;
 margin-right: 60px;
 }
+
 
 .Guiding-Principles.guiding-new-sec.about .div-wrapper .paragraph-wrappper{
 width: 60%;
@@ -706,7 +708,7 @@ text-align: left;
   height: 100%;
   }
   .Guiding-Principles.guiding-new-sec.about .div-wrapper .img-wrap.guiding-image-reveal{
-    margin-right: 30px;
+    margin-right: 80px;
   }
 }
 
@@ -718,6 +720,7 @@ text-align: left;
   .Guiding-Principles.guiding-new-sec.about .div-wrapper .img-wrap.guiding-image-reveal{
 width: 100%;
 margin-bottom: 20px;
+margin-right: 0;
 }
 
 .Guiding-Principles.guiding-new-sec.about .div-wrapper .paragraph-wrappper{

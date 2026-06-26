@@ -413,7 +413,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .Guiding-Principles .div-wrapper .img-wrap {
   width: 1228px;
@@ -442,7 +442,7 @@
 }
 .Guiding-Principles .div-wrapper .img-wrap img {
   width: 100%;
-  height: auto;
+  height: 362px;
 }
 .Guiding-Principles .div-wrapper p {
   text-align: center;

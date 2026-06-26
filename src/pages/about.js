@@ -4,17 +4,31 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
 
-const ExpertisePage = ({ data }) => {
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/autoplay"
+import { Autoplay } from "swiper/modules"
+
+const AboutPage = ({ data }) => {
   const pageData = data?.allWpPage?.nodes?.[0]?.aboutPage
-  const topImage = getImage(pageData?.aboutTopSectionImage?.node?.gatsbyImage)
+
+  const topImage = getImage(
+    pageData?.aboutTopSectionImage?.node?.gatsbyImage
+  )
+
   const topImageAlt =
-    pageData?.aboutTopSectionImage?.node?.altText || "Top section image"
+    pageData?.aboutTopSectionImage?.node?.altText ||
+    "Top section image"
+
+  const swiperList = pageData?.aboutSwiper || []
 
   return (
     <Layout>
       <InsidePage pageId={262} />
 
-      <section className="inner-top-section center-text" >
+      {/* HERO SECTION */}
+      <section className="inner-top-section center-text">
         <div className="container">
           {pageData?.aboutTopSectionTitle && (
             <h2 data-aos="fade-up" data-aos-delay="100">
@@ -27,60 +41,125 @@ const ExpertisePage = ({ data }) => {
             </h2>
           )}
 
-          {topImage && (
-            <div className="top-section-image" data-aos="fade-up" data-aos-delay="250">
-              <GatsbyImage
-                image={topImage}
-                alt={topImageAlt}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          )}
+          <div className="about-wrapper">
+            {topImage && (
+              <div
+                className="top-section-image"
+                data-aos="fade-up"
+                data-aos-delay="250"
+              >
+                <GatsbyImage
+                  image={topImage}
+                  alt={topImageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  className="border-img"
+                />
+              </div>
+            )}
 
-          {pageData?.aboutTopSectionPara && (
-            <p data-aos="fade-up" data-aos-delay="300"
-              dangerouslySetInnerHTML={{ __html: pageData.aboutTopSectionPara }}
-            />
-          )}
+            {pageData?.aboutTopSectionPara && (
+              <p
+                className="about-para"
+                data-aos="fade-up"
+                data-aos-delay="300"
+                dangerouslySetInnerHTML={{
+                  __html: pageData.aboutTopSectionPara,
+                }}
+              />
+            )}
+          </div>
         </div>
       </section>
 
+      {/* ✅ SWIPER LOGO SLIDER SECTION */}
+      {swiperList.length > 0 && (
+        <section className="logo-slider-section">
+          <div className="container">
+            <Swiper
+              modules={[Autoplay]}
+              slidesPerView="auto"
+              loop={true}
+              speed={1000}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
+              spaceBetween={60}   
+            >
+              {swiperList.map((item, index) => {
+                const logo = item?.logo?.node?.mediaItemUrl
+                const alt = item?.logo?.node?.altText || "Partner logo"
+
+                return (
+                  <SwiperSlide key={index}>
+                    <div className="logo-item">
+                      {logo && (
+                        <img src={logo} alt={alt} loading="lazy" decoding="async" />
+                      )}
+                    </div>
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+          </div>
+        </section>
+      )}
+
+      {/* APPROACH SECTION */}
       <section className="patient-care-section">
         <div className="container">
           {(pageData?.approachSubtitle || pageData?.approachTitle) && (
-            <div className="section-heading center-text" data-aos="fade-up">
+            <div
+              className="section-heading center-text"
+              data-aos="fade-up"
+            >
               {pageData?.approachSubtitle && (
-                <span className="subtitle">{pageData.approachSubtitle}</span>
+                <span className="subtitle">
+                  {pageData.approachSubtitle}
+                </span>
               )}
-              {pageData?.approachTitle && <h2>{pageData.approachTitle}</h2>}
+              {pageData?.approachTitle && (
+                <h2>{pageData.approachTitle}</h2>
+              )}
             </div>
           )}
 
           {pageData?.approachList?.map((item, index) => {
-            const approachImage = getImage(item?.approachImage?.node?.gatsbyImage)
+            const approachImage = getImage(
+              item?.approachImage?.node?.gatsbyImage
+            )
+
             const approachAlt =
-              item?.approachImage?.node?.altText || `Approach image ${index + 1}`
+              item?.approachImage?.node?.altText ||
+              `Approach image ${index + 1}`
 
             return (
               <div
-
                 key={index}
-                className={`patient-care-row ${index % 2 !== 0 ? "reverse" : ""}`}
+                className={`patient-care-row ${index % 2 !== 0 ? "reverse" : ""
+                  }`}
               >
                 {approachImage && (
-                  <div className="patient-care-image" data-aos="fade-right">
+                  <div
+                    className="patient-care-image"
+                    data-aos="fade-right"
+                  >
                     <GatsbyImage
                       image={approachImage}
                       alt={approachAlt}
                       loading="lazy"
                       decoding="async"
+                       className="border-img"
                     />
                   </div>
                 )}
 
                 {item?.approachSideParagraph && (
-                  <div className="patient-care-content" data-aos="fade-left">
+                  <div
+                    className="patient-care-content"
+                    data-aos="fade-left"
+                  >
                     <p
                       dangerouslySetInnerHTML={{
                         __html: item.approachSideParagraph,
@@ -91,38 +170,31 @@ const ExpertisePage = ({ data }) => {
               </div>
             )
           })}
-
-          {/* {pageData?.bottomParagraph && (
-            <div className="patient-care-bottom-text">
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: pageData.bottomParagraph,
-                }}
-              />
-            </div>
-          )} */}
         </div>
       </section>
+
+
     </Layout>
   )
 }
 
-export default ExpertisePage
+export default AboutPage
 
 export const query = graphql`
   query MyQuery {
     allWpPage(filter: { databaseId: { eq: 262 } }) {
       nodes {
-        title
         aboutPage {
           aboutTopSectionTitle
           aboutTopSectionSubtitle
           aboutTopSectionPara
+
           aboutTopSectionImage {
             node {
               altText
               gatsbyImage(
-                width: 1000
+                width: 609
+                height: 342
                 quality: 90
                 placeholder: BLURRED
                 layout: CONSTRAINED
@@ -130,21 +202,33 @@ export const query = graphql`
               )
             }
           }
+
           approachTitle
           approachSubtitle
-          bottomParagraph
+
           approachList {
             approachSideParagraph
             approachImage {
               node {
                 altText
                 gatsbyImage(
-                  width: 800
+                  width: 660
+                  height: 517
                   quality: 90
                   layout: CONSTRAINED
                   placeholder: BLURRED
                   formats: [AUTO, WEBP, AVIF]
                 )
+              }
+            }
+          }
+
+          aboutSwiper {
+          text
+            logo {
+              node {
+                altText
+                mediaItemUrl
               }
             }
           }

@@ -174,12 +174,14 @@ const HomePage = ({ data }) => {
                       image={aboutnextimage}
                       alt={"brain img"}
                       loading="lazy"
+                      className="border-img"
                     />
                   ) : (
                     <img
                       src="https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Brain.png"
                       alt="brain img"
                       loading="lazy"
+                       className="border-img"
                     />
                   )}
 
@@ -245,6 +247,7 @@ const HomePage = ({ data }) => {
                       image={guidingPrincipleImage}
                       alt={"brain img"}
                       loading="lazy"
+                       className="border-img"
                     />
                   ) : (
                     <img

@@ -1,6 +1,9 @@
 .blog-list-section {
   padding: 0;
 }
+.blog-list-section .gatsby-image-wrapper {
+ width: 100%;
+}
 
 .blog-list-section .blog-grid {
   display: grid;
