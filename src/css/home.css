@@ -1,6 +1,6 @@
 .hero-section {
   height: 100vh;
-  background: url(https://app.drprashantmakhija.com/wp-content/uploads/2026/06/Hero-Image.webp);
+  background: url(https://app.drprashantmakhija.com/wp-content/uploads/2026/06/Hero-Image-1.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -20,7 +20,7 @@
   .hero-section {
     padding: 50px 0;
     height: auto;
-    background: url(https://app.drprashantmakhija.com/wp-content/uploads/2026/06/mobile-bg-img-new.webp);
+    background: url(https://app.drprashantmakhija.com/wp-content/uploads/2026/06/mobile-bg-img-new-1.webp);
     background-position: center top;
   }
 }
@@ -440,9 +440,19 @@
     margin-bottom: 30px;
   }
 }
+
+.Guiding-Principles.about .div-wrapper .img-wrap img {
+height: 362px !important;
+}
+@media (max-width:2000px) {
+  .Guiding-Principles.about .div-wrapper .img-wrap img {
+  height: 300px !important;
+  }
+}
+
 .Guiding-Principles .div-wrapper .img-wrap img {
   width: 100%;
-  height: 362px;
+  /* height: 362px; */
 }
 .Guiding-Principles .div-wrapper p {
   text-align: center;
