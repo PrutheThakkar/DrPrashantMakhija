@@ -92,7 +92,7 @@ const Header = () => {
         <div className="container wrapper">
           <a href="/" className="logo">
             <img
-              src="https://app.drprashantmakhija.com/wp-content/uploads/2026/04/logo-updated.svg"
+              src="https://app.drprashantmakhija.com/wp-content/uploads/2026/06/header-new-prashnat-1.svg"
               alt="Logo"
             />
           </a>
