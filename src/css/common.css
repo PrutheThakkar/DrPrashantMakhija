@@ -1269,6 +1269,11 @@ footer .btn-wrap a {
     padding: 15px 30px;
   }
 }
+@media (max-width:767px) {
+  footer .btn-wrap{
+    justify-content: flex-start;
+  }
+}
 
 .site-footer {
   position: relative;
