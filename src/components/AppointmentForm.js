@@ -74,6 +74,8 @@ const AppointmentForm = () => {
     >
       {({ isSubmitting }) => (
         <Form className="appointment-form"  data-aos="fade-up">
+          <div className="form-wrapper">
+
           <div className="form-group">
             <Field type="text" name="firstName" placeholder="First Name" />
             <ErrorMessage name="firstName" component="div" className="error" />
@@ -121,6 +123,7 @@ const AppointmentForm = () => {
               {formMessage}
             </div>
           )}
+          </div>
         </Form>
       )}
     </Formik>

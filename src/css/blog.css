@@ -63,6 +63,16 @@
 .blog-list-section .blog-content h3 {
   margin-bottom: 12px;
 }
+@media (max-width:767px) {
+  .blog-list-section .blog-content {
+    padding: 12px;
+  }
+  .blog-list-section .blog-content h3{
+
+    text-align:center ;
+  }
+  
+}
 
 .blog-list-section .blog-content h3 a {
   color: #203f6b;

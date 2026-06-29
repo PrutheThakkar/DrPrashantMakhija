@@ -18,10 +18,12 @@
 }
 @media (max-width: 767px) {
   .hero-section {
-    padding: 50px 0;
+    /* padding: 50px 0; */
     height: auto;
     background: url(https://app.drprashantmakhija.com/wp-content/uploads/2026/06/mobile-bg-img-new-1.webp);
     background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 .hero-section .container {
@@ -163,6 +165,12 @@
   position: relative;
  padding-top: clamp(3.375rem, -5.7875rem + 12.6354vw, 5rem);
 }
+@media (max-width:767px) {
+  .about-section .container {
+  flex-direction: column-reverse;
+  display: flex;
+  }
+}
 .about-section .container ul {
   display: flex;
   flex-wrap: wrap;
@@ -198,7 +206,7 @@
 @media (max-width: 720px) {
   .about-section .container ul li {
     margin: 10px !important;
-    width: 40%;
+    width: 100%;
     margin-bottom: 10px !important;
     justify-content: center !important;
   }
@@ -331,7 +339,10 @@
     position: relative;
     padding-top: 0;
     /* margin-top: 70px; */
-    padding-top: 70px;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    transform: translate(0);
   }
 }
 .about-section .container .center-text p {
@@ -400,7 +411,7 @@
 }
 @media (max-width: 350px) {
   .Areas-of-Clinical-Focus .swiper-pagination .swiper-pagination-bullet {
-    width: 30px;
+    width: 20px;
     height: 5px;
   }
 }

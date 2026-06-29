@@ -72,39 +72,49 @@ const AboutPage = ({ data }) => {
         </div>
       </section>
 
-      {/* ✅ SWIPER LOGO SLIDER SECTION */}
-      {swiperList.length > 0 && (
-        <section className="logo-slider-section">
-          <div className="container">
-            <Swiper
-              modules={[Autoplay]}
-              slidesPerView="auto"
-              loop={true}
-              speed={1000}
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              // spaceBetween={60}   
-            >
-              {swiperList.map((item, index) => {
-                const logo = item?.logo?.node?.mediaItemUrl
-                const alt = item?.logo?.node?.altText || "Partner logo"
+     {/* ✅ SWIPER LOGO SLIDER SECTION */}
+{swiperList.length > 0 && (
+  <section className="logo-slider-section">
+    <div className="container">
+      <Swiper
+        modules={[Autoplay]}
+        slidesPerView="auto"
+        loop={true}
+        speed={1000}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          // when window width is >= 0px
+          0: {
+            slidesPerView: 1,
+          },
+          // when window width is >= 768px (tablet+)
+          768: {
+            slidesPerView: "auto",
+          },
+        }}
+        // spaceBetween={60}   
+      >
+        {swiperList.map((item, index) => {
+          const logo = item?.logo?.node?.mediaItemUrl
+          const alt = item?.logo?.node?.altText || "Partner logo"
 
-                return (
-                  <SwiperSlide key={index}>
-                    <div className="logo-item">
-                      {logo && (
-                        <img src={logo} alt={alt} loading="lazy" decoding="async" />
-                      )}
-                    </div>
-                  </SwiperSlide>
-                )
-              })}
-            </Swiper>
-          </div>
-        </section>
-      )}
+          return (
+            <SwiperSlide key={index}>
+              <div className="logo-item">
+                {logo && (
+                  <img src={logo} alt={alt} loading="lazy" decoding="async" />
+                )}
+              </div>
+            </SwiperSlide>
+          )
+        })}
+      </Swiper>
+    </div>
+  </section>
+)}
 
       {/* APPROACH SECTION */}
       <section className="patient-care-section">

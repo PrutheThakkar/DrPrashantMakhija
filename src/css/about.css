@@ -75,6 +75,9 @@
       .patient-care-content {
         width: 100%;
       }
+      .patient-care-content p{
+        text-align: center;
+      }
     }
 
   
@@ -111,6 +114,9 @@
   .inner-top-section .about-wrapper .about-para{
     width: 100%;
   }
+  .inner-top-section .about-wrapper .about-para {
+    text-align: center;
+  }
 }
 
 
@@ -131,6 +137,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width:767px) {
+  .logo-slider-section .swiper-slide{
+    width: 100% !important;
+  }
 }
 
 /* remove margin completely (Swiper handles spacing) */

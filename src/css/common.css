@@ -367,7 +367,7 @@ h2 {
 }
 @media (max-width: 767px) {
   h2 {
-    font-size: clamp(1.75rem, 1.2501rem + 1.0429vw, 2.188rem);
+    font-size: clamp(1rem, 1.2501rem + 1.0429vw, 2.188rem);
   }
 }
 h2 span {
