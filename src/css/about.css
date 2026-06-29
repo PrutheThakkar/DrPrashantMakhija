@@ -116,6 +116,7 @@
   }
   .inner-top-section .about-wrapper .about-para {
     text-align: center;
+    margin-bottom: 0;
   }
 }
 
@@ -137,10 +138,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 30px;
 }
 @media (max-width:767px) {
   .logo-slider-section .swiper-slide{
-    width: 100% !important;
+    /* width: 100% !important; */
+     margin: 0 ;
   }
 }
 

@@ -72,32 +72,35 @@ const AboutPage = ({ data }) => {
         </div>
       </section>
 
-     {/* ✅ SWIPER LOGO SLIDER SECTION */}
+{/* ✅ SWIPER LOGO SLIDER SECTION */}
 {swiperList.length > 0 && (
   <section className="logo-slider-section">
     <div className="container">
-      <Swiper
-        modules={[Autoplay]}
-        slidesPerView="auto"
-        loop={true}
-        speed={1000}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          // when window width is >= 0px
-          0: {
-            slidesPerView: 1,
-          },
-          // when window width is >= 768px (tablet+)
-          768: {
-            slidesPerView: "auto",
-          },
-        }}
-        // spaceBetween={60}   
-      >
-        {swiperList.map((item, index) => {
+     <Swiper
+  modules={[Autoplay]}
+  slidesPerView="auto"
+  loop={true}
+  speed={4000}
+  freeMode={true} // enable smooth scroll for mobile
+  freeModeMomentum={false}
+  autoplay={{
+    delay: 0, // continuous movement
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }}
+  breakpoints={{
+    0: {
+      slidesPerView: "auto",
+      freeMode: true, // mobile continuous scroll
+    },
+    768: {
+      slidesPerView: "auto",
+      freeMode: false, // desktop normal slider
+    },
+  }}
+>
+        {swiperList.concat(swiperList).map((item, index) => {
+          // duplicate the array for seamless loop
           const logo = item?.logo?.node?.mediaItemUrl
           const alt = item?.logo?.node?.altText || "Partner logo"
 
