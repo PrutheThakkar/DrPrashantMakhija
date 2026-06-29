@@ -109,20 +109,17 @@ const AboutPage = ({ data }) => {
       {/* APPROACH SECTION */}
       <section className="patient-care-section">
         <div className="container">
-          {(pageData?.approachSubtitle || pageData?.approachTitle) && (
-            <div
-              className="section-heading center-text"
-              data-aos="fade-up"
-            >
-              {pageData?.approachSubtitle && (
+
+
+           {pageData?.aboutTopSectionTitle && (
+            <h2 data-aos="fade-up" data-aos-delay="100">
+              {pageData?.aboutTopSectionSubtitle && (
                 <span className="subtitle">
                   {pageData.approachSubtitle}
                 </span>
               )}
-              {pageData?.approachTitle && (
-                <h2>{pageData.approachTitle}</h2>
-              )}
-            </div>
+              {pageData.approachTitle}
+            </h2>
           )}
 
           {pageData?.approachList?.map((item, index) => {

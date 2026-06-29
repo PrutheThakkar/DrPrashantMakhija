@@ -95,7 +95,7 @@ const Header = () => {
               src="https://app.drprashantmakhija.com/wp-content/uploads/2026/06/Prashant-Website-Logo.webp"
               alt="Logo"
             />
-          </a>
+          </a> 
 
           {/* Desktop Menu */}
           <ul className="menu-list">
