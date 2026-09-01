@@ -125,6 +125,12 @@
   /* padding: 60px 0; */
   overflow: hidden; /* ✅ important */
 }
+
+/* Keep autoplay moving at a constant marquee speed. */
+.logo-slider-section .logo-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+  align-items: center;
+}
 @media (max-width:767px) {
   .logo-slider-section{
     padding: 0;

@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
+import Seo from "../components/seo"
+import { expertiseSchema, pageSeo } from "../data/seo"
 
 const ExpertisePage = ({ data }) => {
   const expertiseList =
@@ -88,6 +90,10 @@ const ExpertisePage = ({ data }) => {
 }
 
 export default ExpertisePage
+
+export const Head = () => (
+  <Seo {...pageSeo.expertise} schema={expertiseSchema} />
+)
 
 export const query = graphql`
    query ExpertisePageQuery {

@@ -3,12 +3,15 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
+import Seo from "../components/seo"
+import { pageSeo, physicianSchema } from "../data/seo"
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/autoplay"
-import { Autoplay } from "swiper/modules"
+import "swiper/css/free-mode"
+import { Autoplay, FreeMode } from "swiper/modules"
 
 const AboutPage = ({ data }) => {
   const pageData = data?.allWpPage?.nodes?.[0]?.aboutPage
@@ -76,29 +79,31 @@ const AboutPage = ({ data }) => {
 {swiperList.length > 0 && (
   <section className="logo-slider-section">
     <div className="container">
-     <Swiper
-  modules={[Autoplay]}
-  slidesPerView="auto"
-  loop={true}
-  speed={4000}
-  freeMode={true} // enable smooth scroll for mobile
-  freeModeMomentum={false}
-  autoplay={{
-    delay: 0, // continuous movement
-    disableOnInteraction: false,
-    pauseOnMouseEnter: false,
-  }}
-  breakpoints={{
-    0: {
-      slidesPerView: "auto",
-      freeMode: true, // mobile continuous scroll
-    },
-    768: {
-      slidesPerView: "auto",
-      freeMode: false, // desktop normal slider
-    },
-  }}
->
+      <Swiper
+        className="logo-swiper"
+        modules={[Autoplay, FreeMode]}
+        slidesPerView="auto"
+        spaceBetween={0}
+        loop
+        loopAdditionalSlides={swiperList.length}
+        speed={5000}
+        freeMode={{ enabled: true, momentum: false }}
+        allowTouchMove
+        observer
+        observeParents
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+          waitForTransition: false,
+        }}
+        onSwiper={swiper => {
+          window.requestAnimationFrame(() => {
+            swiper.update()
+            swiper.autoplay.start()
+          })
+        }}
+      >
         {swiperList.concat(swiperList).map((item, index) => {
           // duplicate the array for seamless loop
           const logo = item?.logo?.node?.mediaItemUrl
@@ -189,6 +194,8 @@ const AboutPage = ({ data }) => {
 }
 
 export default AboutPage
+
+export const Head = () => <Seo {...pageSeo.about} schema={physicianSchema} />
 
 export const query = graphql`
   query MyQuery {

@@ -14,6 +14,8 @@ import InkBlobBackground from "../components/InkBlobBackground"
 import watercolorBg from "../images/Hero-Image.jpg"
 
 import prashantSmallLogo from "../images/prashant-small-logo.svg"
+import Seo from "../components/seo"
+import { pageSeo, physicianSchema } from "../data/seo"
 
 const HomePage = ({ data }) => {
   const [isPageLoaded, setIsPageLoaded] = useState(false)
@@ -414,3 +416,5 @@ export const query = graphql`
 `;
 
 export default HomePage
+
+export const Head = () => <Seo {...pageSeo.home} schema={physicianSchema} />

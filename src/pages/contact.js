@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
 import AppointmentForm from "../components/AppointmentForm"
+import Seo from "../components/seo"
+import { pageSeo, physicianSchema } from "../data/seo"
 
 const ExpertisePage = ({ data }) => {
   const pageData = data?.allWpPage?.nodes?.[0]?.expertisePage
@@ -23,6 +25,8 @@ const ExpertisePage = ({ data }) => {
 }
 
 export default ExpertisePage
+
+export const Head = () => <Seo {...pageSeo.contact} schema={physicianSchema} />
 
 export const query = graphql`
   query ExpertisePageQuery {

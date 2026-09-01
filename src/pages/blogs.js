@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import InsidePage from "../components/Insidepage"
+import Seo from "../components/seo"
+import { pageSeo } from "../data/seo"
 
 const placeholderImage =
   "https://app.drprashantmakhija.com/wp-content/uploads/2026/03/Hero-Image.jpg"
@@ -135,6 +137,8 @@ const BlogPage = ({ data }) => {
 }
 
 export default BlogPage
+
+export const Head = () => <Seo {...pageSeo.blogs} />
 
 export const query = graphql`
   query BlogPageQuery {
