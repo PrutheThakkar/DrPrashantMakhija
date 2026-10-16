@@ -92,10 +92,16 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
 }
 
 .btn-wrap .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   padding: 18px 60px;
   font-size: 16px;
   font-weight: 400;
+  font-family: inherit;
+  line-height: 1.2;
+  text-align: center;
   color: #2a3fa0;
   text-decoration: none;
   border-radius: 50px;
@@ -104,6 +110,9 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
   background-clip: padding-box;
   position: relative;
   letter-spacing: 0.02em;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   transition: all 0.8s ease;
 }
 @media (max-width:1440px) {
@@ -145,6 +154,35 @@ background: linear-gradient(0deg,rgba(32, 63, 107, 1) 0%, rgba(32, 63, 107, 0.59
   color: #1a2d80;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(42, 63, 160, 0.15);
+}
+
+.btn-wrap .btn:focus-visible,
+header .wrapper ul li.contact a:focus-visible {
+  outline: 3px solid rgba(42, 96, 201, 0.35);
+  outline-offset: 4px;
+}
+
+.btn-wrap .btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(42, 63, 160, 0.16);
+}
+
+.btn-wrap .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-wrap,
+  .btn-wrap .btn {
+    transition: none;
+  }
+
+  .btn-wrap .btn:hover {
+    animation: none;
+  }
 }
 
 .about-section .container ul li .img-wrap{

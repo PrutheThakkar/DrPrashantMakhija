@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "gatsby"
 
 const Header = () => {
   const [megaOpen, setMegaOpen] = useState(false)
@@ -116,7 +117,7 @@ const Header = () => {
             </li> */}
 
              <li className="menu-item">
-              <a href="/blogs">Insights</a>
+              <Link to="/blogs/">Insights</Link>
             </li>
 
           
@@ -167,7 +168,7 @@ const Header = () => {
           </li>
 
           <li className="mobile-menu-item">
-            <a href="/blogs" onClick={closeMobile}>Insights</a>
+            <Link to="/blogs/" onClick={closeMobile}>Insights</Link>
           </li>
 
           <li className="mobile-menu-item contact">

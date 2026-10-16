@@ -3,6 +3,12 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  // Register the Insights index alongside its article routes.
+  createPage({
+    path: "/blogs/",
+    component: path.resolve("./src/templates/blog-list.js"),
+  })
+
   const result = await graphql(`
     {
       allWpPost {

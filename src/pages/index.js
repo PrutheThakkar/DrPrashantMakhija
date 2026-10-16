@@ -154,7 +154,7 @@ const HomePage = ({ data }) => {
 
                 <div className="btn-wrap">
                   <a href="/contact" className="btn">
-                    Book An Appointment
+                    Contact Here 
                   </a>
                 </div>
               </div>
