@@ -1,22 +1,20 @@
-import React, { useEffect, useRef } from "react"
-import * as THREE from "three"
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 const vertexShader = `
   varying vec2 vUv;
-
   void main() {
     vUv = uv;
     gl_Position = vec4(position, 1.0);
   }
-`
+`;
 
 const fragmentShader = `
   uniform sampler2D uTexture;
   uniform vec2 uResolution;
   uniform float uTime;
-  uniform vec2 uTrail[8];
-  // Removed cursor interaction uniforms
-
+  uniform float uFlowStrength;
+  uniform vec4 uWaves[24];
   varying vec2 vUv;
 
   float hash(vec2 p) {
@@ -24,212 +22,240 @@ const fragmentShader = `
   }
 
   float noise(vec2 p) {
-    vec2 i = floor(p);
+    vec2 cell = floor(p);
     vec2 f = fract(p);
-
-    float a = hash(i);
-    float b = hash(i + vec2(1.0, 0.0));
-    float c = hash(i + vec2(0.0, 1.0));
-    float d = hash(i + vec2(1.0, 1.0));
-
-    vec2 u = f * f * (3.0 - 2.0 * f);
-
-    return mix(a, b, u.x) +
-           (c - a) * u.y * (1.0 - u.x) +
-           (d - b) * u.x * u.y;
+    vec2 blend = f * f * (3.0 - 2.0 * f);
+    return mix(
+      mix(hash(cell), hash(cell + vec2(1.0, 0.0)), blend.x),
+      mix(hash(cell + vec2(0.0, 1.0)), hash(cell + vec2(1.0)), blend.x),
+      blend.y
+    );
   }
 
   float fbm(vec2 p) {
     float value = 0.0;
-    float amp = 0.5;
-
+    float amplitude = 0.5;
     for (int i = 0; i < 5; i++) {
-      value += amp * noise(p);
+      value += amplitude * noise(p);
       p *= 2.0;
-      amp *= 0.5;
+      amplitude *= 0.5;
     }
-
     return value;
   }
 
   void main() {
-    vec2 uv = vUv;
-
-    vec2 baseFlow = vec2(
-      fbm(uv * 2.0 + vec2(uTime * 0.7, -uTime * 0.09)),
-      fbm(uv * 2.0 + vec2(-uTime * 0.9, uTime * 0.8))
-    );
-
-    float field = 0.0;
-    vec2 distort = vec2(0.0);
-
-    for (int i = 0; i < 8; i++) {
-      float idx = float(i);
-      float falloff = 1.0 - (idx / 8.0);
-      vec2 p = uTrail[i];
-
-      vec2 organic = vec2(
-        fbm((uv - p) * 8.0 + idx * 1.73 + uTime * 0.45),
-        fbm((uv - p) * 8.0 - idx * 1.21 - uTime * 0.4)
-      ) - 0.5;
-
-      float radius = mix(0.02, 0.085, falloff);
-      float d = length((uv - p) + organic * 0.03 * falloff);
-
-      float blob = smoothstep(radius + 0.03, radius - 0.01, d);
-      field += blob * (0.75 + falloff * 0.9);
-
-      vec2 dir = normalize((uv - p) + vec2(0.0001));
-      distort += dir * blob * 0.005 * falloff;
+    float aspect = uResolution.x / uResolution.y;
+    vec2 position = vUv * vec2(aspect, 1.0);
+    vec2 displacement = vec2(0.0);
+    for (int i = 0; i < 24; i++) {
+      vec4 wave = uWaves[i];
+      float age = uTime - wave.z;
+      if (wave.w > 0.0 && age >= 0.0 && age < 1.8) {
+        vec2 delta = position - wave.xy * vec2(aspect, 1.0);
+        float distance = length(delta);
+        float radius = age * 0.22;
+        float envelope = exp(-pow((distance - radius) / 0.085, 2.0));
+        float fade = pow(1.0 - age / 1.8, 2.0);
+        float ripple = sin((distance - radius) * 48.0) * envelope;
+        displacement += delta / max(distance, 0.001)
+          * ripple * fade * wave.w * 0.009;
+      }
     }
-
-    // Remove cursor/hover interaction
-    field = 0.0;
-    float halo = 0.0;
-
-    vec2 texUv = uv;
-    texUv += (baseFlow - 0.5) * 0.018;
-    texUv += (vec2(
-      fbm(uv * 4.0 + uTime * 0.14),
-      fbm(uv * 4.0 - uTime * 0.17)
-    ) - 0.5) * 0.014 * halo;
-
-    vec3 color = texture2D(uTexture, texUv).rgb;
-
-    float grain = (hash(uv * uResolution.xy + uTime) - 0.5) * 0.018;
-    color += grain;
-
-    gl_FragColor = vec4(color, 1.0);
+    vec2 uv = vUv + displacement / vec2(aspect, 1.0);
+    // Original liquid movement runs by default; pointer waves layer over it.
+    vec2 flow = vec2(
+      fbm(vUv * 2.0 + vec2(uTime * 0.7, -uTime * 0.09)),
+      fbm(vUv * 2.0 + vec2(-uTime * 0.9, uTime * 0.8))
+    );
+    uv += (flow - 0.5) * 0.018 * uFlowStrength;
+    gl_FragColor = texture2D(uTexture, clamp(uv, vec2(0.001), vec2(0.999)));
+    #include <colorspace_fragment>
   }
-`
+`;
 
 const InkBlobBackground = ({ imageUrl, children, className = "" }) => {
-  const sectionRef = useRef(null)
-  const canvasWrapRef = useRef(null)
+  const sectionRef = useRef(null);
+  const mountRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    if (!sectionRef.current || !canvasWrapRef.current || !imageUrl) return
+    const section = sectionRef.current;
+    const mount = mountRef.current;
+    if (!section || !mount || !imageUrl) return;
 
-    const section = sectionRef.current
-    const mount = canvasWrapRef.current
-
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: false,
-    })
-
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8))
-    renderer.setSize(section.clientWidth, section.clientHeight)
-    mount.appendChild(renderer.domElement)
-
-    const scene = new THREE.Scene()
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
-
-    const textureLoader = new THREE.TextureLoader()
-    const texture = textureLoader.load(imageUrl)
-    texture.minFilter = THREE.LinearFilter
-    texture.magFilter = THREE.LinearFilter
-
-    const trailCount = 8
-    const trail = Array.from({ length: trailCount }, () => new THREE.Vector2(0.5, 0.5))
-
-    const uniforms = {
-      uTexture: { value: texture },
-      uResolution: { value: new THREE.Vector2(section.clientWidth, section.clientHeight) },
-      uTime: { value: 0 },
-      uTrail: { value: trail.map((p) => p.clone()) },
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    } catch {
+      // The CSS background remains visible if WebGL is unavailable.
+      return;
     }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.8));
+    // Match the original image's browser colors after sampling its sRGB texture.
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.NoToneMapping;
+    mount.appendChild(renderer.domElement);
 
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const waves = Array.from(
+      { length: 24 },
+      () => new THREE.Vector4(0, 0, -10, 0)
+    );
+    const uniforms = {
+      uTexture: { value: null },
+      uResolution: { value: new THREE.Vector2(1, 1) },
+      uTime: { value: 0 },
+      uFlowStrength: { value: motion.matches ? 0 : 1 },
+      uWaves: { value: waves },
+    };
     const material = new THREE.ShaderMaterial({
       uniforms,
       vertexShader,
       fragmentShader,
-    })
+    });
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    const scene = new THREE.Scene();
+    scene.add(new THREE.Mesh(geometry, material));
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    let frame = null;
+    let loaded = false;
+    let disposed = false;
+    let nextWave = 0;
+    let lastInput = -Infinity;
+    let lastPoint = null;
+    let visible = true;
 
-    const geometry = new THREE.PlaneGeometry(2, 2)
-    const plane = new THREE.Mesh(geometry, material)
-    scene.add(plane)
-
-    // No cursor interaction for the background animation
-
-    let sectionVisible = true
-
-    let rafId = null
-    const stopAnimation = () => {
-      if (rafId !== null) {
-        window.cancelAnimationFrame(rafId)
-        rafId = null
+    const render = (time) => {
+      frame = null;
+      if (!loaded || disposed || !visible || document.hidden) return;
+      uniforms.uTime.value = time * 0.001;
+      renderer.render(scene, camera);
+      if (!motion.matches) {
+        frame = window.requestAnimationFrame(render);
       }
-    }
-
-    const startAnimation = () => {
-      if (rafId === null) {
-        rafId = window.requestAnimationFrame(animate)
+    };
+    const requestRender = () => {
+      if (
+        frame === null &&
+        loaded &&
+        visible &&
+        !document.hidden &&
+        !disposed
+      ) {
+        frame = window.requestAnimationFrame(render);
       }
-    }
+    };
+    const reset = () => {
+      waves.forEach((wave) => (wave.w = 0));
+      uniforms.uFlowStrength.value = motion.matches ? 0 : 1;
+      lastPoint = null;
+      lastInput = -Infinity;
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      frame = null;
+      requestRender();
+    };
 
-    const resetHoverOnVisibilityChange = (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          sectionVisible = false
-          stopAnimation()
-        } else {
-          sectionVisible = true
-          startAnimation()
-        }
-      })
-    }
+    const texture = new THREE.TextureLoader().load(imageUrl, () => {
+      if (disposed) return;
+      loaded = true;
+      requestRender();
+    });
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    uniforms.uTexture.value = texture;
 
-    const observer = new IntersectionObserver(resetHoverOnVisibilityChange, {
-      threshold: 0,
-    })
-    observer.observe(section)
-
-    // No pointer listeners needed for static background animation
-
-    const onResize = () => {
-      renderer.setSize(section.clientWidth, section.clientHeight)
-      uniforms.uResolution.value.set(section.clientWidth, section.clientHeight)
-    }
-
-    window.addEventListener("resize", onResize)
-
-    const animate = (time) => {
-      uniforms.uTime.value = time * 0.001
-
-      // No hover or cursor trail updates for the background-only effect
-
-      if (sectionVisible) {
-        renderer.render(scene, camera)
-      }
-      rafId = window.requestAnimationFrame(animate)
-    }
-
-    startAnimation()
+    const resize = () => {
+      renderer.setSize(section.clientWidth, section.clientHeight);
+      uniforms.uResolution.value.set(section.clientWidth, section.clientHeight);
+      reset();
+    };
+    const move = (event) => {
+      if (
+        motion.matches ||
+        event.pointerType === "touch" ||
+        !visible ||
+        document.hidden
+      )
+        return;
+      const now = performance.now();
+      if (now - lastInput < 32) return;
+      const bounds = section.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const x = (event.clientX - bounds.left) / bounds.width;
+      const y = 1 - (event.clientY - bounds.top) / bounds.height;
+      const distance = lastPoint
+        ? Math.hypot(
+            (x - lastPoint.x) * bounds.width,
+            (y - lastPoint.y) * bounds.height
+          )
+        : 12;
+      if (distance < 3) return;
+      waves[nextWave].set(
+        x,
+        y,
+        now * 0.001,
+        Math.min(1, 0.35 + distance / 100)
+      );
+      nextWave = (nextWave + 1) % waves.length;
+      lastPoint = { x, y };
+      lastInput = now;
+      requestRender();
+    };
+    const leave = () => {
+      lastPoint = null;
+    };
+    const visibility = () => {
+      reset();
+    };
+    const sizeObserver = new ResizeObserver(resize);
+    sizeObserver.observe(section);
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      reset();
+    });
+    observer.observe(section);
+    resize();
+    section.addEventListener("pointermove", move);
+    section.addEventListener("pointerleave", leave);
+    motion.addEventListener("change", reset);
+    document.addEventListener("visibilitychange", visibility);
 
     return () => {
-      window.cancelAnimationFrame(rafId)
-      window.removeEventListener("resize", onResize)
-      observer.disconnect()
+      disposed = true;
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      sizeObserver.disconnect();
+      observer.disconnect();
+      section.removeEventListener("pointermove", move);
+      section.removeEventListener("pointerleave", leave);
+      motion.removeEventListener("change", reset);
+      document.removeEventListener("visibilitychange", visibility);
+      geometry.dispose();
+      material.dispose();
+      texture.dispose();
+      renderer.dispose();
+      renderer.domElement.remove();
+    };
+  }, [imageUrl]);
 
-      geometry.dispose()
-      material.dispose()
-      texture.dispose()
-      renderer.dispose()
+  return (
+    <div
+      ref={sectionRef}
+      className={`ink-blob-section ${className}`}
+      style={{
+        backgroundImage: `url("${imageUrl}")`,
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      }}
+    >
+      <div
+        ref={mountRef}
+        className="ink-blob-canvas"
+        aria-hidden="true"
+        style={{ pointerEvents: "none" }}
+      />
+      <div className="ink-blob-content">{children}</div>
+    </div>
+  );
+};
 
-      if (mount.contains(renderer.domElement)) {
-        mount.removeChild(renderer.domElement)
-      }
-    }
-  }, [imageUrl])
-
-return (
-  <div ref={sectionRef} className={`ink-blob-section ${className}`}>
-    <div ref={canvasWrapRef} className="ink-blob-canvas" />
-    <div className="ink-blob-content">{children}</div>
-  </div>
-)
-}
-
-export default InkBlobBackground
+export default InkBlobBackground;
